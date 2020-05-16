@@ -11,8 +11,6 @@ __NOTE:__ jBPM requires Java 8 or later.
 
 Red Hat Process Automation Manager
 ----------------------------------
-Red Hat Process Automation Manager (i.e. RHPAM) is basically the commercial version of jBPM. RHPAM is built on the same technology as jBPM but contains distinct features and functionality. RHPAM documentation can be used to supplement documentation found at [jBPM.org](https://www.jbpm.org/) but will require you to adapt the information for use with jBPM. 
-
-Below you will find links to general and some specific documentation on or related to business process design.
+Red Hat Process Automation Manager (i.e. RHPAM) is basically the commercial version of jBPM. RHPAM is built on the same technology as jBPM but contains distinct features and functionality. RHPAM documentation found at the following location can be used to supplement documentation found at [jBPM.org](https://www.jbpm.org/) but will require you to adapt the information for use with jBPM. 
 
 * [RHPAM Reference Documentation](https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.7/)
