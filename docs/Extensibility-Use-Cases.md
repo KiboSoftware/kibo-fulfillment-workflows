@@ -7,7 +7,11 @@
 ## In a BPM workflow, call another REST service synchronously
 This use case will illustrate how to use REST service response data to make flow decisions and provide input to subsequent steps in the process.
 
+You will add functionality for calling an external weather service to get maximum forecast temperature for a given destination ZIP code. The service response data will be used to decide subsequent tasks to be executed based on a given threshold. If the maximum forecast temperature exceeds the threshold the shipment will be directed to Customer Service. If the forecast does not exceed the threshold, the data will simply be provided to the person preparing the shipment, allowing them to decide on suitable packaging or shipping options.
+
 You can use the pre-installed [REST Work Item Handler](https://github.com/kiegroup/jbpm/blob/master/jbpm-workitems/jbpm-workitems-rest/src/main/java/org/jbpm/process/workitem/rest/RESTWorkItemHandler.java) to add external REST API calls to a jBPM business process or workflow. The following steps will guide you through general setup of your custom project and implementation of a custom REST call via jBPM Business Central.
+
+![Example custom fulfillment workflow](/images/example_custom_workflow_calling_weather_api.png)
 
 ### Setup your project to use the REST work item task and handler
 
@@ -162,6 +166,7 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 1. Configure the REST work item task and add Java code to the __On Exit Action__
 
     * Select the newly placed __Rest__ work item task
+    * For this example, set the __Name__ to `Rest WorkItem Call Weather API`
     * Set the following parameters within the __Data Assignments__ section of the task properties editor:
     
     __Rest Data I/O__
@@ -226,6 +231,22 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
     * Add a new sequence flow from new __Diverging Exclusive Gateway__ (g1) to new __Converging Exclusive Gateway__ (g3)
     * Change the default route of the new __Diverging Exclusive Gateway__ (g1) to be `Exclusive`
     * Change the default route of the new __Diverging Exclusive Gateway__ (g2) to be `Exclusive`
+
+1. Use service response data as input to another step in the process
+
+    * Select the __Prepare for Shipment__ human task and open the properties editor
+    * Open the __Implementation/Execution > Assignments__ section of the task properties editor and add two new data input assignments
+        
+        __Prepare for Shipment Data I/O__
+        
+        __Data Inputs and Assignments__
+        
+        Name | Data Type | Source
+        ---- | --------- | ------
+        `destTempMaxForecast_In` | `Integer` | `destTempMax`
+        `destTempMaxThreshold_In` | `Integer` | `destTempMaxThreshold`
+
+    * These variables may now be used to populate corresponding form fields in a custom Kibo Fulfiller frontend.
 
 1. Save your process changes and close the design view
 
