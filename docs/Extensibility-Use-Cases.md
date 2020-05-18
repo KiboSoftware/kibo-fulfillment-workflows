@@ -186,7 +186,7 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
     ---- | --------- | ------
     `Result` | Custom ... `java.util.LinkedHashMap` | `forecastResult`
     
-    __Tip:__ In the example above, notice the value of the `Url` parameter. First of all, instead of using a constant, the entire string could be set in a process variable and referenced here. Secondly, you may inject process variable values into hard-coded string expressions using syntax like, `#{expression}`. This may be done for process and task variables, task descriptions, diverging gateway output flow conditions, etc. This can be a very useful tool for process design and is used here for substring replacement. The `zip` and `APPID` query parameters are using expressions, `#{destZip}` and `#{openweatherAppId}`. 
+    __Tip:__ In the example above, notice the value of the `Url` parameter. First of all, instead of using a constant, the entire string could be set in a process variable and referenced here. Secondly, you may inject process variable values into hard-coded string expressions using syntax like, `#{expression}`. The `zip` and `APPID` query parameters within the `Url` value are using expressions `#{destZip}` and `#{openweatherAppId}`. This can be a very useful tool for process design and is used here for substring replacement. This may be done elsewhere for process and task variables, task descriptions, diverging gateway output flow conditions, etc. 
 
     * Expand the __Implementation/Execution__ section of the task properties editor
     * Add the following Java snippet to the __On Exit Action__ and ensure `java` is the current pull-down selection
