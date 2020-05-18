@@ -11,7 +11,7 @@ You will add functionality for calling an external weather service to get maximu
 
 You can use the pre-installed [REST Work Item Handler](https://github.com/kiegroup/jbpm/blob/master/jbpm-workitems/jbpm-workitems-rest/src/main/java/org/jbpm/process/workitem/rest/RESTWorkItemHandler.java) to add external REST API calls to a jBPM business process or workflow. The following steps will guide you through general setup of your custom project and implementation of a custom REST call via jBPM Business Central.
 
-![Example custom fulfillment workflow](/images/example_custom_workflow_calling_weather_api.png)
+![Example custom fulfillment workflow](/docs/images/example_custom_workflow_calling_weather_api.png)
 
 ### Setup your project to use the REST work item task and handler
 
