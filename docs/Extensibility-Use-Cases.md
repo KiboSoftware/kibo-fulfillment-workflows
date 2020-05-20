@@ -4,8 +4,8 @@
 * [In a BPM workflow, call another REST service asynchronously](#in-a-bpm-workflow-call-another-rest-service-asynchronously)
 * [In a BPM workflow, signal to advance when stopped at a user task](#in-a-bpm-workflow-signal-to-advance-when-stopped-at-a-user-task)
 
-## In a BPM workflow, call another REST service synchronously
-This use case will illustrate how to synchronously call an external REST service and use the response data to make flow decisions as well as provide input to subsequent steps in the process.
+# In a BPM workflow, call another REST service synchronously
+This use case will illustrate how to call an external REST service *synchronously* and use the response data to make flow decisions as well as provide input to subsequent steps in the process.
 
 You will add functionality for calling an external weather service to get a maximum temperature forecast for a given destination ZIP code. The service response data will be used to decide subsequent tasks to be executed based on a given threshold. If the maximum temperature forecast exceeds the threshold, the shipment will be directed to Customer Service; otherwise, the data will simply be provided to the person preparing the shipment, allowing them to decide on suitable packaging or shipping options. Required process instance variables will be initialized with user input received for the __Accept Shipment__ task.
 
@@ -15,7 +15,7 @@ The resulting custom fulfillment workflow:
 
 ![Example custom fulfillment workflow](/docs/images/example_custom_workflow_calling_weather_api.png)
 
-### Setup your project to use the REST work item task and handler
+## Setup your project to use the REST work item task and handler
 
 The following general project setup will allow you to use the __Rest__ work item within any of your custom Kibo Fulfillment Workflows.
 
@@ -113,7 +113,7 @@ The following general project setup will allow you to use the __Rest__ work item
     </deployment-descriptor>
     ```
 
-### Create a custom Kibo Fulfillment Workflow
+## Create a custom Kibo Fulfillment Workflow
 
 This example customization will illustrate use of the __Rest__ work item within a workflow to enable data-driven decisions and task updates. You will be creating a custom Ship-To-Home fulfillment process which leverages the __Rest__ work item and handler to make external calls to the [OpenWeather](https://openweathermap.org/) [Weather API](https://openweathermap.org/api).
 
@@ -269,16 +269,22 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 1. Deploy your custom project and test creating a new instance of process with ID: __YOUR_DEVCENTER_ACCOUNT_KEY__.__YOUR_CUSTOM_WORKFLOW_NAME__
 
 # In a BPM workflow, call another REST service asynchronously
-This use case will illustrate how to use REST service response data to make flow decisions and provide input to other steps in the process.
+This use case will illustrate how to call an external REST service *asynchronously* and use the response data to make flow decisions as well as provide input to subsequent steps in the process.
 
-The following assumes you have already setup your project with the REST work item handler and created a custom Kibo Fulfillment Workflow as documented in the section entitled, "[In a BPM workflow, call another REST service synchronously](#in-a-bpm-workflow-call-another-rest-service-synchronously)."
+Asynchronous work can be achieved in multiple ways with jBPM. A simple approach could be adding a parallel gateway to your workflow, introducing logically asynchronous branches which start executing near instantaneously. For low-level control, custom work item handlers can be implemented using Java's built-in asynchronous programming features or third-party libraries. The jBPM services library also provides a [AsyncWorkItemHandler](https://github.com/kiegroup/jbpm/blob/master/jbpm-services/jbpm-executor/src/main/java/org/jbpm/executor/impl/wih/AsyncWorkItemHandler.java) which can be registered within your project and provided custom command classes & behavior options, such as custom retry configuration. For Kibo Fulfillment, these low-level approaches would need to be carefully designed and approved for use in a production environment.
+
+With the current version of jBPM, another approach is available which leverages the Java Executor framework and a distributed scheduler. Workflow tasks can be marked as asynchronous using the `Is Async` checkbox within the __Implementation/Execution__ section of the task properties editor. With this service-level support in place, when the flow of execution reaches a `Is Async` task, a corresponding job will be scheduled which ultimately runs work item specific handler operations in a separate thread. This will be the focus of this exercise.
+
+You will be building on the custom Kibo Fulfillment process implemented in the section entitled, "[In a BPM workflow, call another REST service synchronously](#in-a-bpm-workflow-call-another-rest-service-synchronously)." If you have not already completed that exercise, please do so before proceeding.
+
+The following assumes you have already [setup your project with the REST work item handler](#setup-your-project-to-use-the-rest-work-item-task-and-handler) and [created a custom Kibo Fulfillment Workflow](#create-a-custom-kibo-fulfillment-workflow) which makes a *synchronous* REST call. 
 
 The resulting custom fulfillment workflow:
 
 ![Example custom fulfillment workflow async](/docs/images/example_custom_workflow_calling_weather_api_async.png)
 
-### Create a custom Kibo Fulfillment Workflow
+## Create a custom Kibo Fulfillment Workflow using an asynchronous task
 NOTE: A non-interrupting start event does not stop or interrupt the execution of the containing or parent process.
 
-## In a BPM workflow, signal to advance when stopped at a user task
+# In a BPM workflow, signal to advance when stopped at a user task
 This use case will illustrate how to move a process to the next step when stopped at a human user task using an external signal.
