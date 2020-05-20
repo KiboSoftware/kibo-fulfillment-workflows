@@ -19,4 +19,5 @@ Red Hat Process Automation Manager
 Red Hat Process Automation Manager (i.e. RHPAM) is basically the commercial version of jBPM. RHPAM is built on the same technology as jBPM but contains distinct features and functionality. RHPAM documentation found at the following location can be used to supplement documentation found at [jBPM.org](https://www.jbpm.org/) but will require you to adapt the information to some extent for use with jBPM. 
 
 * [RHPAM Reference Documentation](https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.7/)
+    * [Process Designer Business Process Model and Notation (BPMN2) Reference Guide](https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.7/html-single/process_designer_business_process_model_and_notation_bpmn2_reference_guide/index)
     * [Custom tasks and work item handlers in Business Central](https://access.redhat.com/documentation/en-us/red_hat_process_automation_manager/7.7/html-single/custom_tasks_and_work_item_handlers_in_business_central/index)

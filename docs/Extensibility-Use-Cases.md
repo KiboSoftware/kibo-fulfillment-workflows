@@ -148,6 +148,18 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
     `forecastResult` | `java.util.Map`
     `openweatherAppId` | `String`
 
+1. Add the following data outputs and assignments to the __Accept Shipment__ human task:
+
+    __Accept Shipment Data I/O__
+    
+    __Data Outputs and Assignments__
+    
+    Name | Data Type | Target
+    ---- | --------- | ------
+    `destZip` | `String` | `destZip`
+    `destTempMaxThreshold` | `Integer` | `destTempMaxThreshold`
+    `openweatherAppId` | `String` | `openweatherAppId`
+
 1. You will be using a Java snippet when you implement the __Rest__ task. Add the following process level data-type imports to avoid using fully qualified class names in script areas.
 
     Add the following class names in the __Imports > Data Type Imports__ section of the __Process > Properties__ editor:
@@ -188,7 +200,7 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
     ---- | --------- | ------
     `Result` | Custom ... `java.util.LinkedHashMap` | `forecastResult`
     
-    __Tip:__ In the example above, notice the value of the `Url` parameter. First of all, instead of using a constant, the entire string could be set in a process variable and referenced here. Secondly, you may inject process variable values into hard-coded string expressions using syntax like, `#{expression}`. The `zip` and `APPID` query parameters within the `Url` value are using expressions `#{destZip}` and `#{openweatherAppId}`. This can be a very useful tool for process design and is used here for substring replacement. This may be done elsewhere for process and task variables, task descriptions, diverging gateway output flow conditions, etc. 
+    __Tip:__ In the example above, notice the value of the `Url` parameter. First of all, instead of using a constant, the entire string could be set in a process variable and referenced here. Secondly, you may inject process variable values into hard-coded string expressions using syntax like: `#{expression}`. The `zip` and `APPID` query parameters within the `Url` value are using expressions `#{destZip}` and `#{openweatherAppId}`. This can be a very useful tool for process design and is used here for substring replacement. This may be done elsewhere for process and task variables, task descriptions, diverging gateway output flow conditions, etc. 
 
     * Expand the __Implementation/Execution__ section of the task properties editor
     * Add the following Java snippet to the __On Exit Action__ and ensure `java` is the current pull-down selection
@@ -258,6 +270,8 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 
 ## In a BPM workflow, call another REST service asynchronously
 This use case will illustrate how to use REST service response data to make flow decisions and provide input to other steps in the process.
+
+NOTE: A non-interrupting start event does not stop or interrupt the execution of the containing or parent process.
 
 ## In a BPM workflow, signal to advance when stopped at a user task
 This use case will illustrate how to move a process to the next step when stopped at a human user task using an external signal.
