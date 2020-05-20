@@ -9,7 +9,7 @@ This use case will illustrate how to call an external REST service *synchronousl
 
 You will add functionality for calling an external weather service to get a maximum temperature forecast for a given destination ZIP code. The service response data will be used to decide subsequent tasks to be executed based on a given threshold. If the maximum temperature forecast exceeds the threshold, the shipment will be directed to Customer Service; otherwise, the data will simply be provided to the person preparing the shipment, allowing them to decide on suitable packaging or shipping options. Required process instance variables will be initialized with user input received for the __Accept Shipment__ task.
 
-You can use the pre-installed [REST Work Item Handler](https://github.com/kiegroup/jbpm/blob/master/jbpm-workitems/jbpm-workitems-rest/src/main/java/org/jbpm/process/workitem/rest/RESTWorkItemHandler.java) to add external REST API calls to a jBPM business process or workflow. The following steps will guide you through general setup of your custom project and implementation of a custom REST call via jBPM Business Central.
+You can use the pre-installed [REST Work Item Handler](https://github.com/kiegroup/jbpm/blob/master/jbpm-workitems/jbpm-workitems-rest/src/main/java/org/jbpm/process/workitem/rest/RESTWorkItemHandler.java) to add external REST API calls to a jBPM business process or workflow. The following steps will guide you through general setup of your custom project and implementation of the above described custom REST call via jBPM Business Central.
 
 The resulting custom fulfillment workflow:
 
@@ -173,7 +173,8 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
     `java.util.LinkedHashMap` |
     `java.lang.Math` |
     
-    __NOTE:__ The [Jackson](https://github.com/FasterXML/jackson) JSON parser is a provided dependency. If you wish to use `com.fasterxml.jackson.databind.ObjectMapper` in scripts, without its fully qualified class name, just add the import here as well.
+    __Tip:__
+    > The [Jackson](https://github.com/FasterXML/jackson) JSON parser is a provided dependency. If you wish to use `com.fasterxml.jackson.databind.ObjectMapper` without the fully qualified class name in scripts, add the import to process data type imports.
 
 1. From the __Service Tasks__ section of the toolbar panel, drag the __Rest__ work item or service task onto the process design canvas. It should be located under the __JBPM-WORKITEMS-REST__ category.
 
@@ -200,7 +201,8 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
     ---- | --------- | ------
     `Result` | Custom ... `java.util.LinkedHashMap` | `forecastResult`
     
-    __Tip:__ In the example above, notice the value of the `Url` parameter. First of all, instead of using a constant, the entire string could be set in a process variable and referenced here. Secondly, you may inject process variable values into hard-coded string expressions using syntax like: `#{expression}`. The `zip` and `APPID` query parameters within the `Url` value are using expressions `#{destZip}` and `#{openweatherAppId}`. This can be a very useful tool for process design and is used here for substring replacement. This may be done elsewhere for process and task variables, task descriptions, diverging gateway output flow conditions, etc. 
+    __Tip:__
+    > In the example above, notice the value of the `Url` parameter. First of all, instead of using a constant, the entire string value could be set in a process variable and referenced here. Secondly, you may inject process variable values into hard-coded string expressions using syntax like: `#{expression}`. The `zip` and `APPID` query parameters within the `Url` value are using expressions `#{destZip}` and `#{openweatherAppId}`. This can be a very useful tool for process design and is used here for substring replacement. This may be done elsewhere for process and task variables, task descriptions, diverging gateway output flow conditions, etc. 
 
     * Expand the __Implementation/Execution__ section of the task properties editor
     * Add the following Java snippet to the __On Exit Action__ and ensure `java` is the current pull-down selection
@@ -271,11 +273,15 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 # In a BPM workflow, call another REST service asynchronously
 This use case will illustrate how to call an external REST service *asynchronously* and use the response data to make flow decisions as well as provide input to subsequent steps in the process.
 
-Asynchronous work can be achieved in multiple ways with jBPM. A simple approach could be adding a parallel gateway to your workflow, introducing logically asynchronous branches which start executing near instantaneously. For low-level control, custom work item handlers can be implemented using Java's built-in asynchronous programming features or third-party libraries. The jBPM services library also provides a [AsyncWorkItemHandler](https://github.com/kiegroup/jbpm/blob/master/jbpm-services/jbpm-executor/src/main/java/org/jbpm/executor/impl/wih/AsyncWorkItemHandler.java) which can be registered within your project and provided custom command classes & behavior options, such as custom retry configuration. For Kibo Fulfillment, these low-level approaches would need to be carefully designed and approved for use in a production environment.
+You will be building on the custom Kibo Fulfillment process implemented in the section entitled, "[In a BPM workflow, call another REST service synchronously](#in-a-bpm-workflow-call-another-rest-service-synchronously)." If you have not already completed that exercise, please do so before proceeding.
+
+Asynchronous work can be achieved in multiple ways with jBPM. A simple approach could be adding a parallel gateway to your workflow, introducing logically asynchronous branches which start executing near instantaneously. For low-level control, custom work item handlers can be implemented using Java's built-in asynchronous programming features or third-party libraries. You can review the jBPM documentation on [concurrency and asynchronous execution](https://docs.jboss.org/jbpm/release/latest/jbpm-docs/html_single/#_jbpmasyncexecution) for detailed alternatives.
+
+__NOTE:__
+> For Kibo Fulfillment workflows, low-level approaches would need to be
+> carefully designed and approved for use in a production environment.
 
 With the current version of jBPM, another approach is available which leverages the Java Executor framework and a distributed scheduler. Workflow tasks can be marked as asynchronous using the `Is Async` checkbox within the __Implementation/Execution__ section of the task properties editor. With this service-level support in place, when the flow of execution reaches a `Is Async` task, a corresponding job will be scheduled which ultimately runs work item specific handler operations in a separate thread. This will be the focus of this exercise.
-
-You will be building on the custom Kibo Fulfillment process implemented in the section entitled, "[In a BPM workflow, call another REST service synchronously](#in-a-bpm-workflow-call-another-rest-service-synchronously)." If you have not already completed that exercise, please do so before proceeding.
 
 The following assumes you have already [setup your project with the REST work item handler](#setup-your-project-to-use-the-rest-work-item-task-and-handler) and [created a custom Kibo Fulfillment Workflow](#create-a-custom-kibo-fulfillment-workflow) which makes a *synchronous* REST call. 
 
@@ -284,7 +290,8 @@ The resulting custom fulfillment workflow:
 ![Example custom fulfillment workflow async](/docs/images/example_custom_workflow_calling_weather_api_async.png)
 
 ## Create a custom Kibo Fulfillment Workflow using an asynchronous task
-NOTE: A non-interrupting start event does not stop or interrupt the execution of the containing or parent process.
+__NOTE:__
+> A non-interrupting start event does not stop or interrupt the execution of the containing or parent process.
 
 # In a BPM workflow, signal to advance when stopped at a user task
 This use case will illustrate how to move a process to the next step when stopped at a human user task using an external signal.
