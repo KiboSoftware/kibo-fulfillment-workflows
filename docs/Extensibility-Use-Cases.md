@@ -271,6 +271,13 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 ## In a BPM workflow, call another REST service asynchronously
 This use case will illustrate how to use REST service response data to make flow decisions and provide input to other steps in the process.
 
+The following assumes you have already setup your project with the REST work item handler and created a custom Kibo Fulfillment Workflow as documented in the section entitled, "[In a BPM workflow, call another REST service synchronously](#in-a-bpm-workflow-call-another-rest-service-synchronously)."
+
+The resulting custom fulfillment workflow:
+
+![Example custom fulfillment workflow async](/docs/images/example_custom_workflow_calling_weather_api_async.png)
+
+### Create a custom Kibo Fulfillment Workflow
 NOTE: A non-interrupting start event does not stop or interrupt the execution of the containing or parent process.
 
 ## In a BPM workflow, signal to advance when stopped at a user task
