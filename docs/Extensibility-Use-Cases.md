@@ -268,8 +268,7 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 
 1. Deploy your custom project and test creating a new instance of process with ID: __YOUR_DEVCENTER_ACCOUNT_KEY__.__YOUR_CUSTOM_WORKFLOW_NAME__
 
-In a BPM workflow, call another REST service asynchronously
------------------------------------------------------------
+# In a BPM workflow, call another REST service asynchronously
 This use case will illustrate how to use REST service response data to make flow decisions and provide input to other steps in the process.
 
 The following assumes you have already setup your project with the REST work item handler and created a custom Kibo Fulfillment Workflow as documented in the section entitled, "[In a BPM workflow, call another REST service synchronously](#in-a-bpm-workflow-call-another-rest-service-synchronously)."
