@@ -135,11 +135,12 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 1. Within the design view of YOUR_CUSTOM_SYNC_WORKFLOW_NAME, change the process *Name*, *ID* and *Package* properties.
 
     Set the following in the *Process > Properties* editor:
+    
     * __Name:__ YOUR_CUSTOM_SYNC_WORKFLOW_NAME
     * __ID:__ YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_SYNC_WORKFLOW_NAME
     * __Package:__ YOUR_DEVCENTER_ACCOUNT_KEY
 
-1. Add the following process variables in the *Process Data* section of the *Process > Properties* editor:
+1. Add the following process variables in the __Process Data__ section of the *Process > Properties* editor:
 
     __Process Variables__
     
@@ -179,12 +180,12 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
     __Tip:__
     > The [Jackson](https://github.com/FasterXML/jackson) JSON parser is a provided dependency. If you wish to use `com.fasterxml.jackson.databind.ObjectMapper` or any other class without the fully qualified class name in scripts, add the class to process data type imports.
 
-1. From the __Service Tasks__ section of the toolbar panel, drag the __Rest__ work item or service task onto the process design canvas. It should be located under the __JBPM-WORKITEMS-REST__ category.
+1. From the __Service Tasks__ section of the toolbar panel, drag the __Rest__ work item or service task onto the process design canvas. It should be located under the *JBPM-WORKITEMS-REST* category.
 
-1. Configure the REST work item task and add Java code to the __On Exit Action__.
+1. Configure the __Rest__ work item task and add Java code to the __On Exit Action__.
 
     * Select the newly placed __Rest__ work item task
-    * For this example, set the __Name__ to __Rest WorkItem Call Weather API__
+    * Name the new task: __Rest WorkItem Call Weather API__
     * Set the following parameters within the __Data Assignments__ section of the task properties editor:
     
     __Rest Data I/O__
@@ -275,9 +276,9 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 
 1. Once you have a new process instance created, advance the workflow until the __Print Packing Slip__ human task has been completed.
 
-1. Navigate to the *Menu > Manage > Process Instances* section of __Business Central__.
+1. Navigate to the *Menu > Manage > Process Instances* section of Business Central.
 
-    * Once redirected to the *Manage Process Instances* section of __Business Central__, click your process instance entry to open a detailed view.
+    * Once redirected to the *Manage Process Instances* section of Business Central, click your process instance entry to open a detailed view.
     * From the process instance detail view, select __Diagram__ and review the current state of workflow execution.
     * If the value of the `destTempMaxThreshold` process instance variable is greater than the value of `destTempMax`, the next active task should now be the __Prepare for Shipment__ task.
     * From the process instance detail view, select __Process Variables__ to review currently assigned variable values.
@@ -318,9 +319,9 @@ This example customization will illustrate use of the __Rest__ work item within 
     * __New Name:__ YOUR_CUSTOM_ASYNC_WORKFLOW_NAME
     * __Package:__ YOUR_DEVCENTER_ACCOUNT_KEY
     
-1. Close the design view of the *YOUR_CUSTOM_SYNC_WORKFLOW_NAME* workflow and open the new *YOUR_CUSTOM_ASYNC_WORKFLOW_NAME* workflow.
+1. Close the design view of the __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__ workflow and open the new __YOUR_CUSTOM_ASYNC_WORKFLOW_NAME__ workflow.
 
-1. Within the design view of the *YOUR_CUSTOM_ASYNC_WORKFLOW_NAME* workflow, change the process *Name*, *ID* and *Package* properties:
+1. Within the design view of the __YOUR_CUSTOM_ASYNC_WORKFLOW_NAME__ workflow, change the process *Name*, *ID* and *Package* properties:
 
     * __Name:__ YOUR_CUSTOM_ASYNC_WORKFLOW_NAME
     * __ID:__ YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_ASYNC_WORKFLOW_NAME
@@ -479,10 +480,10 @@ This example customization will illustrate use of the __Rest__ work item within 
 1. You will have 30 seconds to complete the following steps and see your process instance paused at the timer in the new sub-process:
 
     * Complete the __Print Packing Slip__ human task.
-    * Navigate to the *Menu > Manage > Jobs* section of __Business Central__.
+    * Navigate to the *Menu > Manage > Jobs* section of Business Central.
     * You should see a completed job of type `org.jbpm.process.core.async.AsyncSignalEventCommand`
     * Click the __View process__ action button for the job.
-    * Once redirected to the *Manage Process Instances* section of __Business Central__, click your process instance entry to open a detailed view.
+    * Once redirected to the *Manage Process Instances* section of Business Central, click your process instance entry to open a detailed view.
     * From the process instance detail view, select __Diagram__ and review the current state of workflow execution.
     * Refresh the view to see the flow continue after the 30-second timer has elapsed.
     * If the value of the `destTempMaxThreshold` process instance variable is greater than the value of `destTempMax`, the next active task should now be the __Prepare for Shipment__ task.
