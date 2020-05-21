@@ -270,7 +270,7 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 
 1. Deploy your custom project and test creating a new instance of process with ID: __YOUR_DEVCENTER_ACCOUNT_KEY__.__YOUR_CUSTOM_SYNC_WORKFLOW_NAME__.
 
-1. Once you have a new process instance created, advance the workflow to the __Print Packing Slip__ human task and then complete the task.
+1. Once you have a new process instance created, advance the workflow until the __Print Packing Slip__ human task has been completed.
 
 1. Navigate to the __Menu > Manage > Process Instances__ section of __Business Central__.
 
