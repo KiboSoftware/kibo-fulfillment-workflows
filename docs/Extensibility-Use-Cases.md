@@ -24,9 +24,9 @@ The following general project setup will allow you to use the __Rest__ work item
 
 1. Open your custom project.
 
-1. Navigate to __Settings > Service Tasks__.
+1. Navigate to *Settings > Service Tasks*.
 
-1. Within __Service Tasks__, click the __Rest__ service task __Install__ button to enable its use within the designer.
+1. Within *Service Tasks*, click the __Rest__ service task __Install__ button to enable its use within the designer.
 
 1. Move content from the generated `Rest.wid` file to the `WorkDefinitions.wid` file. Replace any existing "Rest" definition within `WorkDefinitions.wid`, save your changes and then delete the `Rest.wid` file/asset.
 
@@ -78,6 +78,9 @@ The following general project setup will allow you to use the __Rest__ work item
     * Name: `Rest`
     * Value: `new org.jbpm.process.workitem.rest.RESTWorkItemHandler("", "")`
     * Resolver: `MVEL`
+    
+    NOTE:
+    > The name attribute assigned to the work item handler must match the name of the work item definition in order for the handler to be triggered upon work item execution.
 
 1. Save your new __Settings__.
 
@@ -120,23 +123,23 @@ This example customization will illustrate use of the __Rest__ work item within 
 
 Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for a free OpenWeather account in order to get a valid API key.
 
-1. Within your custom project, open the __[FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn)__ workflow.
+1. Within your custom project, open the [FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn) workflow.
 
 1. Click the __Copy__ button, provide a new name and select your custom package:
 
-    * New Name: __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__
-    * Package: __YOUR_DEVCENTER_ACCOUNT_KEY__
+    * __New Name:__ YOUR_CUSTOM_SYNC_WORKFLOW_NAME
+    * __Package:__ YOUR_DEVCENTER_ACCOUNT_KEY
     
-1. Close the design view of the __[FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn)__ workflow and open the new __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__ workflow.
+1. Close the design view of the [FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn) workflow and open the new YOUR_CUSTOM_SYNC_WORKFLOW_NAME workflow.
 
-1. Within the design view of the __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__ workflow, change the process Name, ID and Package properties.
+1. Within the design view of YOUR_CUSTOM_SYNC_WORKFLOW_NAME, change the process Name, ID and Package properties.
 
-    Set the following in the __Process > Properties__ editor:
-    * Name: __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__
-    * ID: __YOUR_DEVCENTER_ACCOUNT_KEY__.__YOUR_CUSTOM_SYNC_WORKFLOW_NAME__
-    * Package: __YOUR_DEVCENTER_ACCOUNT_KEY__
+    Set the following in the *Process > Properties* editor:
+    * __Name:__ YOUR_CUSTOM_SYNC_WORKFLOW_NAME
+    * __ID:__ YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_SYNC_WORKFLOW_NAME
+    * __Package:__ YOUR_DEVCENTER_ACCOUNT_KEY
 
-1. Add the following process variables in the __Process Data__ section of the __Process > Properties__ editor:
+1. Add the following process variables in the *Process Data* section of the *Process > Properties* editor:
 
     __Process Variables__
     
