@@ -82,7 +82,7 @@ The following general project setup will allow you to use the __Rest__ work item
     __NOTE:__
     > The name attribute assigned to the work item handler must match the name of the work item definition in order for the handler to be triggered upon work item execution.
 
-1. Save your new __Settings__.
+1. Save your new settings.
 
 1. Confirm that your project deployment descriptor file has been updated appropriately.
 
@@ -123,16 +123,16 @@ This example customization will illustrate use of the __Rest__ work item within 
 
 Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for a free OpenWeather account in order to get a valid API key.
 
-1. Within your custom project, open the [FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn) workflow.
+1. Within your custom project, open the __[FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn)__ workflow.
 
 1. Click the __Copy__ button, provide a new name and select your custom package:
 
     * __New Name:__ YOUR_CUSTOM_SYNC_WORKFLOW_NAME
     * __Package:__ YOUR_DEVCENTER_ACCOUNT_KEY
     
-1. Close the design view of the [FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn) workflow and open the new YOUR_CUSTOM_SYNC_WORKFLOW_NAME workflow.
+1. Close the design view of the __[FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn)__ workflow and open the new __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__ workflow.
 
-1. Within the design view of YOUR_CUSTOM_SYNC_WORKFLOW_NAME, change the process *Name*, *ID* and *Package* properties.
+1. Within the design view of __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__, change the process *Name*, *ID* and *Package* properties.
 
     Set the following in the *Process > Properties* editor:
     
@@ -272,7 +272,7 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 
 1. Save your process changes and close the design view.
 
-1. Deploy your custom project and test creating a new instance of process with ID: YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_SYNC_WORKFLOW_NAME.
+1. Deploy your custom project and test creating a new instance of process with ID: __YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_SYNC_WORKFLOW_NAME__.
 
 1. Once you have a new process instance created, advance the workflow until the __Print Packing Slip__ human task has been completed.
 
@@ -473,7 +473,7 @@ This example customization will illustrate use of the __Rest__ work item within 
 
 1. Save your process changes and close the design view.
 
-1. Deploy your custom project and test creating a new instance of process with ID: YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_ASYNC_WORKFLOW_NAME.
+1. Deploy your custom project and test creating a new instance of process with ID: __YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_ASYNC_WORKFLOW_NAME__.
 
 1. Once you have a new process instance created, advance the workflow to the __Print Packing Slip__ human task.
 
