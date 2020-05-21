@@ -28,7 +28,7 @@ The following general project setup will allow you to use the __Rest__ work item
 
 1. Within *Service Tasks*, click the __Rest__ service task __Install__ button to enable its use within the designer.
 
-1. Move content from the generated `Rest.wid` file to the `WorkDefinitions.wid` file. Replace any existing "Rest" definition within `WorkDefinitions.wid`, save your changes and then delete the `Rest.wid` file/asset.
+1. Move content from the generated `Rest.wid` file to the `WorkDefinitions.wid` file. Replace any existing __"Rest"__ definition within `WorkDefinitions.wid`, save your changes and then delete the `Rest.wid` file/asset.
 
     Example __Rest__ work item definition:
     ```
@@ -73,13 +73,13 @@ The following general project setup will allow you to use the __Rest__ work item
 
     Each defined work item, or service task, is backed by a corresponding work item handler. Registering a work item handler will update the project deployment descriptor with the appropriate initialization code. 
 
-    Navigate to __Settings > Deployments > Work Item Handlers__, click __Add Work Item Handler__ and enter the following:
+    Navigate to *Settings > Deployments > Work Item Handlers*, click __Add Work Item Handler__ and enter the following:
     
-    * Name: `Rest`
-    * Value: `new org.jbpm.process.workitem.rest.RESTWorkItemHandler("", "")`
-    * Resolver: `MVEL`
+    * __Name:__ `Rest`
+    * __Value:__ `new org.jbpm.process.workitem.rest.RESTWorkItemHandler("", "")`
+    * __Resolver:__ `MVEL`
     
-    NOTE:
+    __NOTE:__
     > The name attribute assigned to the work item handler must match the name of the work item definition in order for the handler to be triggered upon work item execution.
 
 1. Save your new __Settings__.
@@ -132,7 +132,7 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
     
 1. Close the design view of the [FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn) workflow and open the new YOUR_CUSTOM_SYNC_WORKFLOW_NAME workflow.
 
-1. Within the design view of YOUR_CUSTOM_SYNC_WORKFLOW_NAME, change the process Name, ID and Package properties.
+1. Within the design view of YOUR_CUSTOM_SYNC_WORKFLOW_NAME, change the process *Name*, *ID* and *Package* properties.
 
     Set the following in the *Process > Properties* editor:
     * __Name:__ YOUR_CUSTOM_SYNC_WORKFLOW_NAME
@@ -165,7 +165,7 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 
 1. You will be using a Java snippet when you implement the __Rest__ task. Add the following process level data-type imports to avoid using fully qualified class names in script areas.
 
-    Add the following class names in the __Imports > Data Type Imports__ section of the __Process > Properties__ editor:
+    Add the following class names in the *Imports > Data Type Imports* section of the *Process > Properties* editor:
 
     __Data Type Imports__
     
@@ -207,7 +207,7 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
     __Tip:__
     > In the example above, notice the value of the `Url` parameter. First of all, instead of using a constant, the entire string value could be set in a process variable and referenced here. Secondly, you may inject process variable values into hard-coded string expressions using syntax like: `#{expression}`. The `zip` and `APPID` query parameters within the `Url` value are using expressions `#{destZip}` and `#{openweatherAppId}`. This can be a very useful tool for process design and is used here for substring replacement. This may be done elsewhere for process and task variables, task descriptions, diverging gateway output flow conditions, signal references, etc. 
 
-    * Expand the __Implementation/Execution__ section of the task properties editor.
+    * Expand the *Implementation/Execution* section of the task properties editor.
     * Add the following Java snippet to the __On Exit Action__ and select `java` as the language:
     
         ```
@@ -229,19 +229,19 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 
     * Add a new __Exclusive Gateway__ (g1) between the __Converging Exclusive Gateway__ (g0), and the __Prepare for Shipment__ task.
     * Change the existing sequence flow from entering the __Prepare for Shipment__ task to instead enter the new __Exclusive Gateway__ (g1).
-    * Add a new sequence flow from the new __Exclusive Gateway__ (g1) to the new __Rest WorkItem Call Weather API__ task and set its __Implementation/Execution > Condition Expression__ to use the following Java snippet:
+    * Add a new sequence flow from the new __Exclusive Gateway__ (g1) to the new __Rest WorkItem Call Weather API__ task and set its *Implementation/Execution > Condition Expression* to use the following Java snippet:
     
         ```
         return kcontext.getVariable("destZip") != null && kcontext.getVariable("destTempMaxThreshold") != null;
         ```
 
-    * Add two new __Exclusive Gateways__ (g2 & g3) between the new __Rest WorkItem Call Weather API__ task and the __Prepare for Shipment__ task.
+    * Add two new __Exclusive Gateways__ (g2 & g3) between the new __Rest WorkItem Call Weather API__ task, and the __Prepare for Shipment__ task.
     * Add a sequence flow from the __Rest WorkItem Call Weather API__ task to the second of the new __Exclusive Gateways__ (g2).
     * Add a sequence flow from the second to the third of the new __Exclusive Gateways__ (g2 --> g3).
     * Add a sequence flow from the third new __Exclusive Gateway__ (g3) to the __Prepare for Shipment__ task.
     * Add a new __End Signal__ event below the second of the new __Exclusive Gateways__ (g2).
     * Have the new __End Signal__ event send the `customer_care` signal, with a signal scope of `Process Instance`.
-    * Add a new sequence flow from the second of the new __Exclusive Gateways__ (g2) to the new __End Signal__ event and set its __Implementation/Execution > Condition Expression__ to use the following Java snippet:
+    * Add a new sequence flow from the second of the new __Exclusive Gateways__ (g2) to the new __End Signal__ event and set its *Implementation/Execution > Condition Expression* to use the following Java snippet:
     
         ```
         Integer _destTempMax = (Integer) kcontext.getVariable("destTempMax");
@@ -256,7 +256,7 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 1. Use service response data as input to another step in the process.
 
     * Select the __Prepare for Shipment__ human task and open the task properties editor.
-    * Open the __Implementation/Execution > Assignments__ section of the task properties editor and add two new data input assignments:
+    * Open the *Implementation/Execution > Assignments* section of the task properties editor and add two new data input assignments:
         
         __Prepare for Shipment Data I/O__
         
@@ -271,13 +271,13 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
 
 1. Save your process changes and close the design view.
 
-1. Deploy your custom project and test creating a new instance of process with ID: __YOUR_DEVCENTER_ACCOUNT_KEY__.__YOUR_CUSTOM_SYNC_WORKFLOW_NAME__.
+1. Deploy your custom project and test creating a new instance of process with ID: YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_SYNC_WORKFLOW_NAME.
 
 1. Once you have a new process instance created, advance the workflow until the __Print Packing Slip__ human task has been completed.
 
-1. Navigate to the __Menu > Manage > Process Instances__ section of __Business Central__.
+1. Navigate to the *Menu > Manage > Process Instances* section of __Business Central__.
 
-    * Once redirected to the __Manage Process Instances__ section of __Business Central__, click your process instance entry to open a detailed view.
+    * Once redirected to the *Manage Process Instances* section of __Business Central__, click your process instance entry to open a detailed view.
     * From the process instance detail view, select __Diagram__ and review the current state of workflow execution.
     * If the value of the `destTempMaxThreshold` process instance variable is greater than the value of `destTempMax`, the next active task should now be the __Prepare for Shipment__ task.
     * From the process instance detail view, select __Process Variables__ to review currently assigned variable values.
@@ -296,8 +296,7 @@ You will be building on the custom Kibo Fulfillment process implemented in the s
 Asynchronous work can be achieved in multiple ways with jBPM. A simple approach could be adding a parallel gateway to your workflow, introducing logically asynchronous branches which start executing near instantaneously. For low-level control, custom work item handlers can be implemented using Java's built-in asynchronous programming features or third-party libraries. You can review the jBPM documentation on [concurrency and asynchronous execution](https://docs.jboss.org/jbpm/release/latest/jbpm-docs/html_single/#_jbpmasyncexecution) for detailed alternatives.
 
 __NOTE:__
-> For Kibo Fulfillment workflows, low-level approaches would need to be
-> carefully designed and approved for use in a production environment.
+> For Kibo Fulfillment workflows, low-level approaches would need to be carefully designed and approved for use in a production environment.
 
 The jBPM Executor is an out-of-box asynchronous support option which leverages the Java Executor framework and a distributed scheduler. Workflow tasks can be marked as asynchronous using the `Is Async` checkbox within the __Implementation/Execution__ section of the task properties editor. With this pre-configured service-level support in place, when the flow of execution reaches a `Is Async` task, a corresponding job will be scheduled which ultimately runs work item specific handler operations in a separate thread. This will be the focus of the exercise.
 
@@ -316,18 +315,18 @@ This example customization will illustrate use of the __Rest__ work item within 
 1. Click the __Copy__ button, provide a new name and select your custom package.
 
     Example:
-    * New Name: __YOUR_CUSTOM_ASYNC_WORKFLOW_NAME__
-    * Package: __YOUR_DEVCENTER_ACCOUNT_KEY__
+    * __New Name:__ YOUR_CUSTOM_ASYNC_WORKFLOW_NAME
+    * __Package:__ YOUR_DEVCENTER_ACCOUNT_KEY
     
-1. Close the design view of the __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__ workflow and open the new __YOUR_CUSTOM_ASYNC_WORKFLOW_NAME__ workflow.
+1. Close the design view of the *YOUR_CUSTOM_SYNC_WORKFLOW_NAME* workflow and open the new *YOUR_CUSTOM_ASYNC_WORKFLOW_NAME* workflow.
 
-1. Within the design view of the __YOUR_CUSTOM_ASYNC_WORKFLOW_NAME__ workflow, change the process Name, ID and Package properties:
+1. Within the design view of the *YOUR_CUSTOM_ASYNC_WORKFLOW_NAME* workflow, change the process *Name*, *ID* and *Package* properties:
 
-    * Name: __YOUR_CUSTOM_ASYNC_WORKFLOW_NAME__
-    * ID: __YOUR_DEVCENTER_ACCOUNT_KEY__.__YOUR_CUSTOM_ASYNC_WORKFLOW_NAME__
-    * Package: __YOUR_DEVCENTER_ACCOUNT_KEY__
+    * __Name:__ YOUR_CUSTOM_ASYNC_WORKFLOW_NAME
+    * __ID:__ YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_ASYNC_WORKFLOW_NAME
+    * __Package:__ YOUR_DEVCENTER_ACCOUNT_KEY
 
-1. Ensure these process variables exist in the __Process Data__ section of the __Process > Properties__ editor:
+1. Ensure these process variables exist in the __Process Data__ section of the *Process > Properties* editor:
 
     __Process Variables__
     
@@ -351,7 +350,7 @@ This example customization will illustrate use of the __Rest__ work item within 
     `destTempMaxThreshold` | `Integer` | `destTempMaxThreshold`
     `openweatherAppId` | `String` | `openweatherAppId`
 
-1. Ensure these class names exist in the __Imports > Data Type Imports__ section of the __Process > Properties__ editor:
+1. Ensure these class names exist in the *Imports > Data Type Imports* section of the *Process > Properties* editor:
 
     __Data Type Imports__
     
@@ -372,8 +371,8 @@ This example customization will illustrate use of the __Rest__ work item within 
 1. From the __Start Events__ section of the toolbar panel, drag the __Start Signal__ start event onto the process design canvas.
 
     * Place it within the boundaries of the new __Get Forecast Sub-process__.
-    * Set a new `get_forecast` signal reference in the __Implementation/Execution > Signal__ section of the start event properties editor.
-    * Uncheck the `Is Interrupting` checkbox in the __Implementation/Execution__ section of the start event properties editor.
+    * Set a new `get_forecast` signal reference in the *Implementation/Execution > Signal* section of the start event properties editor.
+    * Uncheck the `Is Interrupting` checkbox in the *Implementation/Execution* section of the start event properties editor.
     
         __NOTE:__
         > A non-interrupting start event does not stop or interrupt the execution of the containing or parent process.
@@ -426,7 +425,7 @@ This example customization will illustrate use of the __Rest__ work item within 
     * Have the new __Throwing Intermediate Signal__ event send the `get_forecast` signal, with a signal scope of `Process Instance`.
     * Change the existing sequence flow from entering the __Rest WorkItem Call Weather API__ task to instead enter the new __Throwing Intermediate Signal__ event; starting at __Diverging Exclusive Gateway__ (g1).
 
-        * Ensure the __Implementation/Execution > Condition Expression__ of the re-targeted sequence flow is using the following Java snippet:
+        * Ensure the *Implementation/Execution > Condition Expression* of the re-targeted sequence flow is using the following Java snippet:
             
             ```
             return kcontext.getVariable("destZip") != null && kcontext.getVariable("destTempMaxThreshold") != null;
@@ -435,7 +434,7 @@ This example customization will illustrate use of the __Rest__ work item within 
 1. From the __Intermediate Events__ section of the toolbar panel, drag a __Catching Intermediate Signal__ event onto the process design canvas.
 
     * Place the event below the new __Throwing Intermediate Signal__ event, aligned with __Diverging Exclusive Gateway__ (g2).
-    * Set a new `forecast_received` signal reference in the __Implementation/Execution > Signal__ section of the signal event properties editor.
+    * Set a new `forecast_received` signal reference in the *Implementation/Execution > Signal* section of the signal event properties editor.
     * Add a sequence flow from the new __Catching Intermediate Signal__ event to __Diverging Exclusive Gateway__ (g2).
 
 1. Complete implementation of the __Get Forecast Sub-process__:
@@ -444,7 +443,7 @@ This example customization will illustrate use of the __Rest__ work item within 
     * From the __Intermediate Events__ section of the toolbar panel, drag a __Catching Intermediate Timer__ event onto the process design canvas. This will be used to simulate a delayed response.
 
         * Place the new timer event after the __Rest WorkItem Call Weather API__ task.
-        * Set the following 30 second, ISO-8601 timer duration expression in the __Implementation/Execution > Timer Settings > Fire once after duration__ section of the event properties editor:
+        * Set the following 30 second, ISO-8601 timer duration expression in the *Implementation/Execution > Timer Settings > Fire once after duration* section of the event properties editor:
                   
             ```
             PT30S
@@ -458,7 +457,7 @@ This example customization will illustrate use of the __Rest__ work item within 
 1. Use service response data as input to another step in the process.
 
     * Select the __Prepare for Shipment__ human task and open the task properties editor.
-    * Open the __Implementation/Execution > Assignments__ section of the task properties editor and ensure these data input assignments exist:
+    * Open the *Implementation/Execution > Assignments* section of the task properties editor and ensure these data input assignments exist:
         
         __Prepare for Shipment Data I/O__
         
@@ -473,17 +472,17 @@ This example customization will illustrate use of the __Rest__ work item within 
 
 1. Save your process changes and close the design view.
 
-1. Deploy your custom project and test creating a new instance of process with ID: __YOUR_DEVCENTER_ACCOUNT_KEY__.__YOUR_CUSTOM_ASYNC_WORKFLOW_NAME__.
+1. Deploy your custom project and test creating a new instance of process with ID: YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_ASYNC_WORKFLOW_NAME.
 
 1. Once you have a new process instance created, advance the workflow to the __Print Packing Slip__ human task.
 
 1. You will have 30 seconds to complete the following steps and see your process instance paused at the timer in the new sub-process:
 
     * Complete the __Print Packing Slip__ human task.
-    * Navigate to the __Menu > Manage > Jobs__ section of __Business Central__.
+    * Navigate to the *Menu > Manage > Jobs* section of __Business Central__.
     * You should see a completed job of type `org.jbpm.process.core.async.AsyncSignalEventCommand`
     * Click the __View process__ action button for the job.
-    * Once redirected to the __Manage Process Instances__ section of __Business Central__, click your process instance entry to open a detailed view.
+    * Once redirected to the *Manage Process Instances* section of __Business Central__, click your process instance entry to open a detailed view.
     * From the process instance detail view, select __Diagram__ and review the current state of workflow execution.
     * Refresh the view to see the flow continue after the 30-second timer has elapsed.
     * If the value of the `destTempMaxThreshold` process instance variable is greater than the value of `destTempMax`, the next active task should now be the __Prepare for Shipment__ task.
