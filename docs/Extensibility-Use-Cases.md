@@ -281,8 +281,8 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
     
 1. Start the __Prepare for Shipment__ task and notice the following data inputs:
 
-    * __DestTempMaxForecast_In__:  value of `destTempMax`
-    * __DestTempMaxThreshold_In__:  value of `destTempMaxThreshold`
+    * __DestTempMaxForecast_In__: *value should match that of the `destTempMax` process instance variable*
+    * __DestTempMaxThreshold_In__: *value should match that of the `destTempMaxThreshold` process instance variable*
 
 # In a BPM workflow, call another REST service asynchronously
 
@@ -488,8 +488,8 @@ This example customization will illustrate use of the __Rest__ work item within 
     
 1. Start the __Prepare for Shipment__ task and notice the following data inputs:
 
-    * __DestTempMaxForecast_In__:  value of `destTempMax`
-    * __DestTempMaxThreshold_In__:  value of `destTempMaxThreshold`
+    * __DestTempMaxForecast_In__: *value should match that of the `destTempMax` process instance variable*
+    * __DestTempMaxThreshold_In__: *value should match that of the `destTempMaxThreshold` process instance variable*
 
 # In a BPM workflow, signal to advance when stopped at a user task
 
