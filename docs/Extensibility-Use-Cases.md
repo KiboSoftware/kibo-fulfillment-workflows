@@ -120,14 +120,14 @@ This example customization will illustrate use of the __Rest__ work item within 
 
 Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for a free OpenWeather account in order to get a valid API key.
 
-1. Within your custom project, open the __FulfillmentProcess-STH__ workflow.
+1. Within your custom project, open the __[FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn)__ workflow.
 
 1. Click the __Copy__ button, provide a new name and select your custom package:
 
     * New Name: __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__
     * Package: __YOUR_DEVCENTER_ACCOUNT_KEY__
     
-1. Close the design view of the __FulfillmentProcess-STH__ workflow and open the new __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__ workflow.
+1. Close the design view of the __[FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn)__ workflow and open the new __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__ workflow.
 
 1. Within the design view of the __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__ workflow, change the process Name, ID and Package properties.
 
