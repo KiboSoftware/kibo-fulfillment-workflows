@@ -140,7 +140,7 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
     * __ID:__ YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_SYNC_WORKFLOW_NAME
     * __Package:__ YOUR_DEVCENTER_ACCOUNT_KEY
 
-1. Add the following process variables in the __Process Data__ section of the *Process > Properties* editor:
+1. Add the following process variables in the *Process Data* section of the *Process > Properties* editor:
 
     __Process Variables__
     
@@ -180,13 +180,13 @@ Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for
     __Tip:__
     > The [Jackson](https://github.com/FasterXML/jackson) JSON parser is a provided dependency. If you wish to use `com.fasterxml.jackson.databind.ObjectMapper` or any other class without the fully qualified class name in scripts, add the class to process data type imports.
 
-1. From the __Service Tasks__ section of the toolbar panel, drag the __Rest__ work item or service task onto the process design canvas. It should be located under the *JBPM-WORKITEMS-REST* category.
+1. From the *Service Tasks* section of the toolbar panel, drag the __Rest__ work item or service task onto the process design canvas. It should be located under the *JBPM-WORKITEMS-REST* category.
 
 1. Configure the __Rest__ work item task and add Java code to the __On Exit Action__.
 
     * Select the newly placed __Rest__ work item task
     * Name the new task: __Rest WorkItem Call Weather API__
-    * Set the following parameters within the __Data Assignments__ section of the task properties editor:
+    * Set the following parameters within the *Data Assignments* section of the task properties editor:
     
     __Rest Data I/O__
     
@@ -299,7 +299,7 @@ Asynchronous work can be achieved in multiple ways with jBPM. A simple approach 
 __NOTE:__
 > For Kibo Fulfillment workflows, low-level approaches would need to be carefully designed and approved for use in a production environment.
 
-The jBPM Executor is an out-of-box asynchronous support option which leverages the Java Executor framework and a distributed scheduler. Workflow tasks can be marked as asynchronous using the `Is Async` checkbox within the __Implementation/Execution__ section of the task properties editor. With this pre-configured service-level support in place, when the flow of execution reaches a `Is Async` task, a corresponding job will be scheduled which ultimately runs work item specific handler operations in a separate thread. This will be the focus of the exercise.
+The jBPM Executor is an out-of-box asynchronous support option which leverages the Java Executor framework and a distributed scheduler. Workflow tasks can be marked as asynchronous using the `Is Async` checkbox within the *Implementation/Execution* section of the task properties editor. With this pre-configured service-level support in place, when the flow of execution reaches a `Is Async` task, a corresponding job will be scheduled which ultimately runs work item specific handler operations in a separate thread. This will be the focus of the exercise.
 
 The following assumes you have already [setup your project with the REST work item handler](#setup-your-project-to-use-the-rest-work-item-task-and-handler) and [created a custom Kibo Fulfillment Workflow](#create-a-custom-kibo-fulfillment-workflow) which makes a *synchronous* REST call. 
 
@@ -327,7 +327,7 @@ This example customization will illustrate use of the __Rest__ work item within 
     * __ID:__ YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_ASYNC_WORKFLOW_NAME
     * __Package:__ YOUR_DEVCENTER_ACCOUNT_KEY
 
-1. Ensure these process variables exist in the __Process Data__ section of the *Process > Properties* editor:
+1. Ensure these process variables exist in the *Process Data* section of the *Process > Properties* editor:
 
     __Process Variables__
     
@@ -365,11 +365,11 @@ This example customization will illustrate use of the __Rest__ work item within 
     __Tip:__
     > The [Jackson](https://github.com/FasterXML/jackson) JSON parser is a provided dependency. If you wish to use `com.fasterxml.jackson.databind.ObjectMapper` or any other class without the fully qualified class name in scripts, add the class to process data type imports.
 
-1. From the __SubProcesses__ section of the toolbar panel, drag the __Event__ sub-process onto the process design canvas.
+1. From the *SubProcesses* section of the toolbar panel, drag the __Event__ sub-process onto the process design canvas.
 
     * Name the new sub-process: __Get Forecast Sub-process__.
 
-1. From the __Start Events__ section of the toolbar panel, drag the __Start Signal__ start event onto the process design canvas.
+1. From the *Start Events* section of the toolbar panel, drag the __Start Signal__ start event onto the process design canvas.
 
     * Place it within the boundaries of the new __Get Forecast Sub-process__.
     * Set a new `get_forecast` signal reference in the *Implementation/Execution > Signal* section of the start event properties editor.
@@ -383,8 +383,8 @@ This example customization will illustrate use of the __Rest__ work item within 
     * Place the task after the new __Start Signal__ start event within the boundaries of the __Get Forecast Sub-process__.
     * *Leave in place* the sequence flow existing from __Diverging Exclusive Gateway__ (g1) to the __Rest WorkItem Call Weather API__ task.
     * *Remove* the sequence flow existing from the __Rest WorkItem Call Weather API__ task to __Diverging Exclusive Gateway__ (g2).
-    * Check the `Is Async` checkbox in the __Implementation/Execution__ section of the __Rest WorkItem Call Weather API__ task properties editor.
-    * Ensure these parameters exist within the __Data Assignments__ section of the __Rest WorkItem Call Weather API__ task properties editor:
+    * Check the `Is Async` checkbox in the *Implementation/Execution* section of the __Rest WorkItem Call Weather API__ task properties editor.
+    * Ensure these parameters exist within the *Data Assignments* section of the __Rest WorkItem Call Weather API__ task properties editor:
     
     __Rest Data I/O__
     
@@ -420,7 +420,7 @@ This example customization will illustrate use of the __Rest__ work item within 
         kcontext.setVariable("destTempMax", _destTempMax);
         ```
 
-1. From the __Intermediate Events__ section of the toolbar panel, drag a __Throwing Intermediate Signal__ event onto the process design canvas.
+1. From the *Intermediate Events* section of the toolbar panel, drag a __Throwing Intermediate Signal__ event onto the process design canvas.
 
     * Place it at the original location of the __Rest WorkItem Call Weather API__ task.
     * Have the new __Throwing Intermediate Signal__ event send the `get_forecast` signal, with a signal scope of `Process Instance`.
@@ -432,7 +432,7 @@ This example customization will illustrate use of the __Rest__ work item within 
             return kcontext.getVariable("destZip") != null && kcontext.getVariable("destTempMaxThreshold") != null;
             ```
 
-1. From the __Intermediate Events__ section of the toolbar panel, drag a __Catching Intermediate Signal__ event onto the process design canvas.
+1. From the *Intermediate Events* section of the toolbar panel, drag a __Catching Intermediate Signal__ event onto the process design canvas.
 
     * Place the event below the new __Throwing Intermediate Signal__ event, aligned with __Diverging Exclusive Gateway__ (g2).
     * Set a new `forecast_received` signal reference in the *Implementation/Execution > Signal* section of the signal event properties editor.
@@ -441,7 +441,7 @@ This example customization will illustrate use of the __Rest__ work item within 
 1. Complete implementation of the __Get Forecast Sub-process__:
 
     * Add a sequence flow from the *non-interrupting* __Start Event__ to the __Rest WorkItem Call Weather API__ task.
-    * From the __Intermediate Events__ section of the toolbar panel, drag a __Catching Intermediate Timer__ event onto the process design canvas. This will be used to simulate a delayed response.
+    * From the *Intermediate Events* section of the toolbar panel, drag a __Catching Intermediate Timer__ event onto the process design canvas. This will be used to simulate a delayed response.
 
         * Place the new timer event after the __Rest WorkItem Call Weather API__ task.
         * Set the following 30 second, ISO-8601 timer duration expression in the *Implementation/Execution > Timer Settings > Fire once after duration* section of the event properties editor:
