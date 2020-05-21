@@ -454,7 +454,7 @@ This example customization will illustrate use of the __Rest__ work item within 
 
 1. Use service response data as input to another step in the process.
 
-    * Select the __Prepare for Shipment__ human task and open the properties editor.
+    * Select the __Prepare for Shipment__ human task and open the task properties editor.
     * Open the __Implementation/Execution > Assignments__ section of the task properties editor and ensure these data input assignments exist:
         
         __Prepare for Shipment Data I/O__
