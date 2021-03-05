@@ -1,4 +1,4 @@
-FROM maven:3.6.0-jdk-11 as build
+FROM maven:3-jdk-8 as build
 WORKDIR /usr/src/app
 
 COPY . .
