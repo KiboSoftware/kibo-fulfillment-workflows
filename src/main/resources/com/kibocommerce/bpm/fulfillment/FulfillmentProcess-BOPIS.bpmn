@@ -432,7 +432,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
 System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
         </drools:onEntry-script>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
-          <drools:script><![CDATA[kcontext.setVariable("currentState","TRANSFERS_RECEIVED");
+          <drools:script><![CDATA[kcontext.setVariable("currentState","ALL_TRANSFERS_RECEIVED");
 System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
         </drools:onExit-script>
       </bpmn2:extensionElements>
