@@ -77,10 +77,8 @@
   <bpmn2:signal id="_4803913d-671c-3bd6-9ac9-cac74ff88803" name="customer_care"/>
   <bpmn2:signal id="_8c45e5e3-5cbc-3441-a970-964edc5752b9" name="fulfilled"/>
   <bpmn2:signal id="_469bba0a-5642-35df-8eed-e42db14f17b0" name="back"/>
-  <bpmn2:signal id="_469bba0a-5642-35df-8eed-e42db14f17b0" name="back"/>
   <bpmn2:signal id="_6d8040b0-475e-361c-b6ed-12bb52fa30a8" name="wait_for_transfer"/>
   <bpmn2:signal id="_da084524-3149-3123-a57f-55631d22eec8" name="picked"/>
-  <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
   <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
   <bpmn2:process id="Default_STH_Process" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="1.2134.0" drools:adHoc="false" name="Default STH Process" isExecutable="true" processType="Public">
     <bpmn2:documentation id="_9vTO8QQmEeyiPuW-SB6Etg"><![CDATA[Default Ship To Home Process]]></bpmn2:documentation>
@@ -1048,19 +1046,19 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
       <bpmndi:BPMNShape id="shape__B8B9C3CA-5BC8-4476-BA22-1D4324FAC12B" bpmnElement="_B8B9C3CA-5BC8-4476-BA22-1D4324FAC12B">
         <dc:Bounds height="102.0" width="154.0" x="950.0" y="234.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_737FAC3B-7880-4DD1-83E2-E79CBC8A0AE5">
+      <bpmndi:BPMNShape id="shape__737FAC3B-7880-4DD1-83E2-E79CBC8A0AE5" bpmnElement="_737FAC3B-7880-4DD1-83E2-E79CBC8A0AE5">
         <dc:Bounds height="56.0" width="56.0" x="368.0" y="361.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__213EA68C-3B28-4DAC-B20C-5781F64F37CE" bpmnElement="_213EA68C-3B28-4DAC-B20C-5781F64F37CE">
         <dc:Bounds height="56.0" width="56.0" x="742.0" y="50.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_995334A6-36A1-4BF8-86FB-52288378A489">
+      <bpmndi:BPMNShape id="shape__995334A6-36A1-4BF8-86FB-52288378A489" bpmnElement="_995334A6-36A1-4BF8-86FB-52288378A489">
         <dc:Bounds height="56.0" width="56.0" x="1076.0" y="876.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_BD34A7B8-E3B5-4AF9-AAFF-F8EED8A48459">
+      <bpmndi:BPMNShape id="shape__BD34A7B8-E3B5-4AF9-AAFF-F8EED8A48459" bpmnElement="_BD34A7B8-E3B5-4AF9-AAFF-F8EED8A48459">
         <dc:Bounds height="56.0" width="56.0" x="922.0" y="581.1"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_74E02505-48CF-4240-B4CD-BE34B238C433">
+      <bpmndi:BPMNShape id="shape__74E02505-48CF-4240-B4CD-BE34B238C433" bpmnElement="_74E02505-48CF-4240-B4CD-BE34B238C433">
         <dc:Bounds height="56.0" width="56.0" x="593.8" y="205.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__6435A331-0795-4719-989B-F9FB69570FC5" bpmnElement="_6435A331-0795-4719-989B-F9FB69570FC5">
@@ -1069,7 +1067,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
       <bpmndi:BPMNShape id="shape__B0D1C36A-2433-4D92-8D4C-CC51A53C07FE" bpmnElement="_B0D1C36A-2433-4D92-8D4C-CC51A53C07FE">
         <dc:Bounds height="102.0" width="154.0" x="1034.0" y="372.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_E826205A-FE75-4901-8AA5-0F7384C95995">
+      <bpmndi:BPMNShape id="shape__E826205A-FE75-4901-8AA5-0F7384C95995" bpmnElement="_E826205A-FE75-4901-8AA5-0F7384C95995">
         <dc:Bounds height="56.0" width="56.0" x="596.0" y="307.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__9526728D-72BC-4F30-A86D-6CBE62C64AB5" bpmnElement="_9526728D-72BC-4F30-A86D-6CBE62C64AB5">
@@ -1105,7 +1103,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
       <bpmndi:BPMNShape id="shape__35731F17-197B-46B2-A5D5-A1B8F5D17ED5" bpmnElement="_35731F17-197B-46B2-A5D5-A1B8F5D17ED5">
         <dc:Bounds height="56.0" width="56.0" x="1418.0" y="257.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_E0EE998D-5AF0-4665-AA0D-DEAF04279E4F">
+      <bpmndi:BPMNShape id="shape__E0EE998D-5AF0-4665-AA0D-DEAF04279E4F" bpmnElement="_E0EE998D-5AF0-4665-AA0D-DEAF04279E4F">
         <dc:Bounds height="56.0" width="56.0" x="368.0" y="158.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__8BA7AB88-C5E1-4523-BDB5-ED3FC00A2078" bpmnElement="_8BA7AB88-C5E1-4523-BDB5-ED3FC00A2078">
@@ -1132,7 +1130,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
       <bpmndi:BPMNShape id="shape__BCEE215E-B711-4977-8F94-1F1A4F9A15B5" bpmnElement="_BCEE215E-B711-4977-8F94-1F1A4F9A15B5">
         <dc:Bounds height="102.0" width="154.0" x="469.0" y="29.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_EE1F8A0E-220F-4921-B823-6D63AA1B4E13">
+      <bpmndi:BPMNShape id="shape__EE1F8A0E-220F-4921-B823-6D63AA1B4E13" bpmnElement="_EE1F8A0E-220F-4921-B823-6D63AA1B4E13">
         <dc:Bounds height="56.0" width="56.0" x="960.0" y="308.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="edge_shape__371E2D52-82BD-492D-9465-7FBEECD9DB1E_to_shape__B8B9C3CA-5BC8-4476-BA22-1D4324FAC12B" bpmnElement="_51CBAD19-E4AA-4065-B9A4-2F40EF880553">
@@ -1144,7 +1142,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
         <di:waypoint xsi:type="dc:Point" x="1027.0" y="285.0"/>
         <di:waypoint xsi:type="dc:Point" x="1239.0" y="284.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape__5061F756-1EB9-4CD5-8E6C-49CB301CDE9F_to_shape_null" bpmnElement="_DBA15F92-0C0B-464A-8A40-24A0770FA1FF">
+      <bpmndi:BPMNEdge id="edge_shape__5061F756-1EB9-4CD5-8E6C-49CB301CDE9F_to_shape__737FAC3B-7880-4DD1-83E2-E79CBC8A0AE5" bpmnElement="_DBA15F92-0C0B-464A-8A40-24A0770FA1FF">
         <di:waypoint xsi:type="dc:Point" x="396.0" y="312.0"/>
         <di:waypoint xsi:type="dc:Point" x="396.0" y="361.0"/>
       </bpmndi:BPMNEdge>
