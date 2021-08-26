@@ -21,11 +21,8 @@
   <bpmn2:signal id="_d5c39a1d-9ace-3393-b835-f334a1fb9206" name="canceled"/>
   <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
   <bpmn2:process id="Custom_STH_Transmitted_to_SAP" drools:packageName="com.kibocommerce.bpm.fulfillment.hidden" drools:version="1.2132.1" drools:adHoc="false" name="Custom STH Transmitted to SAP" isExecutable="true" processType="Public">
-    <bpmn2:documentation id="_u0V0EQauEey0spa2fDtsoA"><![CDATA[Custom Ship To Home - Transmitted to SAP Process]]></bpmn2:documentation>
+    <bpmn2:documentation id="_Bg200bNxEeuhTppYS5fdrA"><![CDATA[Custom Ship To Home - Transmitted to SAP Process]]></bpmn2:documentation>
     <bpmn2:extensionElements>
-      <drools:metaData name="customDescription">
-        <drools:metaValue><![CDATA[Custom Ship To Home - Transmitted to SAP Process]]></drools:metaValue>
-      </drools:metaData>
       <drools:metaData name="customDescription">
         <drools:metaValue><![CDATA[Custom Ship To Home - Transmitted to SAP Process]]></drools:metaValue>
       </drools:metaData>
@@ -109,7 +106,7 @@
       </bpmn2:extensionElements>
     </bpmn2:sequenceFlow>
     <bpmn2:userTask id="_DFA9CBD1-0229-49BB-B232-3117A665608A" name="Transmitted to SAP">
-      <bpmn2:documentation id="_u0V0FAauEey0spa2fDtsoA"><![CDATA[Transmitted to SAP Task]]></bpmn2:documentation>
+      <bpmn2:documentation id="_Bg201bNxEeuhTppYS5fdrA"><![CDATA[Transmitted to SAP Task]]></bpmn2:documentation>
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
           <drools:metaValue><![CDATA[Transmitted to SAP]]></drools:metaValue>
@@ -121,19 +118,19 @@ System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_314B69D8-82DA-4E57-A1F0-0C62AA1805FF</bpmn2:incoming>
       <bpmn2:outgoing>_21EC07EA-5D0A-4E34-B177-7A8EDFE97576</bpmn2:outgoing>
-      <bpmn2:ioSpecification id="_u0V0FQauEey0spa2fDtsoA">
+      <bpmn2:ioSpecification id="_Bg201rNxEeuhTppYS5fdrA">
         <bpmn2:dataInput id="_DFA9CBD1-0229-49BB-B232-3117A665608A_TaskNameInputX" drools:dtype="Object" itemSubjectRef="__DFA9CBD1-0229-49BB-B232-3117A665608A_TaskNameInputXItem" name="TaskName"/>
         <bpmn2:dataInput id="_DFA9CBD1-0229-49BB-B232-3117A665608A_SkippableInputX" drools:dtype="Object" itemSubjectRef="__DFA9CBD1-0229-49BB-B232-3117A665608A_SkippableInputXItem" name="Skippable"/>
         <bpmn2:dataInput id="_DFA9CBD1-0229-49BB-B232-3117A665608A_DescriptionInputX" drools:dtype="Object" itemSubjectRef="__DFA9CBD1-0229-49BB-B232-3117A665608A_DescriptionInputXItem" name="Description"/>
         <bpmn2:dataInput id="_DFA9CBD1-0229-49BB-B232-3117A665608A_PriorityInputX" drools:dtype="Object" itemSubjectRef="__DFA9CBD1-0229-49BB-B232-3117A665608A_PriorityInputXItem" name="Priority"/>
         <bpmn2:dataOutput id="_DFA9CBD1-0229-49BB-B232-3117A665608A_splitShipmentOutputX" drools:dtype="Boolean" itemSubjectRef="__DFA9CBD1-0229-49BB-B232-3117A665608A_splitShipmentOutputXItem" name="splitShipment"/>
-        <bpmn2:inputSet id="_u0WbIAauEey0spa2fDtsoA">
+        <bpmn2:inputSet id="_Bg2017NxEeuhTppYS5fdrA">
           <bpmn2:dataInputRefs>_DFA9CBD1-0229-49BB-B232-3117A665608A_TaskNameInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_DFA9CBD1-0229-49BB-B232-3117A665608A_SkippableInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_DFA9CBD1-0229-49BB-B232-3117A665608A_DescriptionInputX</bpmn2:dataInputRefs>
           <bpmn2:dataInputRefs>_DFA9CBD1-0229-49BB-B232-3117A665608A_PriorityInputX</bpmn2:dataInputRefs>
         </bpmn2:inputSet>
-        <bpmn2:outputSet id="_u0WbIQauEey0spa2fDtsoA">
+        <bpmn2:outputSet id="_Bg202LNxEeuhTppYS5fdrA">
           <bpmn2:dataOutputRefs>_DFA9CBD1-0229-49BB-B232-3117A665608A_splitShipmentOutputX</bpmn2:dataOutputRefs>
         </bpmn2:outputSet>
       </bpmn2:ioSpecification>
@@ -190,7 +187,7 @@ Shipment]]></drools:metaValue>
       <bpmn2:outgoing>_7F559948-CA07-43F7-A5F7-EF8C3A9CA85C</bpmn2:outgoing>
     </bpmn2:scriptTask>
     <bpmn2:scriptTask id="_BD26A81D-33BC-417F-B0F4-604ED29ABCDD" name="New Order" scriptFormat="http://www.java.com/java">
-      <bpmn2:documentation id="_u0WbNQauEey0spa2fDtsoA"><![CDATA[New Order Task]]></bpmn2:documentation>
+      <bpmn2:documentation id="_Bg3b7LNxEeuhTppYS5fdrA"><![CDATA[New Order Task]]></bpmn2:documentation>
       <bpmn2:extensionElements>
         <drools:metaData name="elementname">
           <drools:metaValue><![CDATA[New Order]]></drools:metaValue>
@@ -203,7 +200,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:endEvent id="_DFB39B1E-FB21-4215-B05F-8CC8E456594D">
       <bpmn2:incoming>_12862D8C-AF9C-47DD-9F88-6385D788675F</bpmn2:incoming>
-      <bpmn2:terminateEventDefinition id="_u0WbNgauEey0spa2fDtsoA"/>
+      <bpmn2:terminateEventDefinition id="_Bg3b7bNxEeuhTppYS5fdrA"/>
     </bpmn2:endEvent>
     <bpmn2:scriptTask id="_22A8ABE5-95C0-465E-8EA8-C70886E69B5D" name="Complete" scriptFormat="http://www.java.com/java">
       <bpmn2:extensionElements>
@@ -234,11 +231,11 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_E6E6E53E-F05F-4460-8D07-E2DF8DCE6B59</bpmn2:incoming>
       <bpmn2:outgoing>_D1A31747-A552-4BC7-A6AE-FF68F8A1AB98</bpmn2:outgoing>
-      <bpmn2:signalEventDefinition id="_u0WbNwauEey0spa2fDtsoA" signalRef="_c7537d6d-48ec-3261-b49c-09a9f284bd45"/>
+      <bpmn2:signalEventDefinition id="_Bg3b7rNxEeuhTppYS5fdrA" signalRef="_c7537d6d-48ec-3261-b49c-09a9f284bd45"/>
     </bpmn2:intermediateCatchEvent>
     <bpmn2:endEvent id="_41A05145-7733-4242-90B7-4A30B92A423A">
       <bpmn2:incoming>_9147F948-ED47-4C3D-990F-723BF54150E9</bpmn2:incoming>
-      <bpmn2:terminateEventDefinition id="_u0WbOAauEey0spa2fDtsoA"/>
+      <bpmn2:terminateEventDefinition id="_Bg3b77NxEeuhTppYS5fdrA"/>
     </bpmn2:endEvent>
     <bpmn2:parallelGateway id="_9F327CA3-CACA-4C74-94BF-FC38276A951F" gatewayDirection="Diverging">
       <bpmn2:incoming>_65F8C31B-FAA6-437D-A50B-DB8BAA48908A</bpmn2:incoming>
