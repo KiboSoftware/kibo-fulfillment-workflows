@@ -32,7 +32,7 @@
   <bpmn2:signal id="_4803913d-671c-3bd6-9ac9-cac74ff88803" name="customer_care"/>
   <bpmn2:signal id="_d5c39a1d-9ace-3393-b835-f334a1fb9206" name="canceled"/>
   <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
-  <bpmn2:process id="Custom_STH_Transmitted_to_SAP" drools:packageName="com.kibocommerce.bpm.fulfillment.hidden" drools:version="1.2202.0" drools:adHoc="false" name="Custom STH Transmitted to SAP" isExecutable="true" processType="Public">
+  <bpmn2:process id="Custom_STH_Transmitted_to_SAP" drools:packageName="com.kibocommerce.bpm.fulfillment.hidden" drools:version="1.2152.0" drools:adHoc="false" name="Custom STH Transmitted to SAP" isExecutable="true" processType="Public">
     <bpmn2:documentation id="_lkUNsW76EeyPOvwPQK7L_A"><![CDATA[Custom Ship To Home - Transmitted to SAP Process]]></bpmn2:documentation>
     <bpmn2:extensionElements>
       <drools:metaData name="customDescription">
