@@ -87,12 +87,7 @@
   <bpmn2:signal id="_4803913d-671c-3bd6-9ac9-cac74ff88803" name="customer_care"/>
   <bpmn2:signal id="_469bba0a-5642-35df-8eed-e42db14f17b0" name="back"/>
   <bpmn2:signal id="_8c45e5e3-5cbc-3441-a970-964edc5752b9" name="fulfilled"/>
-  <bpmn2:signal id="_469bba0a-5642-35df-8eed-e42db14f17b0" name="back"/>
-  <bpmn2:signal id="_469bba0a-5642-35df-8eed-e42db14f17b0" name="back"/>
   <bpmn2:signal id="_da084524-3149-3123-a57f-55631d22eec8" name="picked"/>
-  <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
-  <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
-  <bpmn2:signal id="_469bba0a-5642-35df-8eed-e42db14f17b0" name="back"/>
   <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
   <bpmn2:process id="AFG_Custom_STH_Process" drools:packageName="com.kibocommerce.bpm.fulfillment" drools:version="1.2208.0" drools:adHoc="false" name="AFG-Custom-STH-Process" isExecutable="true" processType="Public">
     <bpmn2:documentation id="_QUVKUY3lEeyV6fVKoxwgzg"><![CDATA[Custom Ship To Home process of AFG]]></bpmn2:documentation>
@@ -1124,22 +1119,22 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
         <di:waypoint xsi:type="dc:Point" x="1480.0" y="1122.5"/>
         <di:waypoint xsi:type="dc:Point" x="1519.0" y="1122.5"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_727FC75C-E177-484C-A3A1-814BF20A2D0D">
+      <bpmndi:BPMNShape id="shape__727FC75C-E177-484C-A3A1-814BF20A2D0D" bpmnElement="_727FC75C-E177-484C-A3A1-814BF20A2D0D">
         <dc:Bounds height="56.0" width="56.0" x="1101.0" y="842.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__B8B9C3CA-5BC8-4476-BA22-1D4324FAC12B" bpmnElement="_B8B9C3CA-5BC8-4476-BA22-1D4324FAC12B">
         <dc:Bounds height="102.0" width="154.0" x="975.0" y="234.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_737FAC3B-7880-4DD1-83E2-E79CBC8A0AE5">
+      <bpmndi:BPMNShape id="shape__737FAC3B-7880-4DD1-83E2-E79CBC8A0AE5" bpmnElement="_737FAC3B-7880-4DD1-83E2-E79CBC8A0AE5">
         <dc:Bounds height="56.0" width="56.0" x="368.0" y="667.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__213EA68C-3B28-4DAC-B20C-5781F64F37CE" bpmnElement="_213EA68C-3B28-4DAC-B20C-5781F64F37CE">
         <dc:Bounds height="56.0" width="56.0" x="762.0" y="507.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_995334A6-36A1-4BF8-86FB-52288378A489">
+      <bpmndi:BPMNShape id="shape__995334A6-36A1-4BF8-86FB-52288378A489" bpmnElement="_995334A6-36A1-4BF8-86FB-52288378A489">
         <dc:Bounds height="56.0" width="56.0" x="947.0" y="1108.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_BD34A7B8-E3B5-4AF9-AAFF-F8EED8A48459">
+      <bpmndi:BPMNShape id="shape__BD34A7B8-E3B5-4AF9-AAFF-F8EED8A48459" bpmnElement="_BD34A7B8-E3B5-4AF9-AAFF-F8EED8A48459">
         <dc:Bounds height="56.0" width="56.0" x="947.0" y="641.6"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__6435A331-0795-4719-989B-F9FB69570FC5" bpmnElement="_6435A331-0795-4719-989B-F9FB69570FC5">
@@ -1148,7 +1143,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
       <bpmndi:BPMNShape id="shape__B0D1C36A-2433-4D92-8D4C-CC51A53C07FE" bpmnElement="_B0D1C36A-2433-4D92-8D4C-CC51A53C07FE">
         <dc:Bounds height="102.0" width="154.0" x="1059.0" y="372.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_E826205A-FE75-4901-8AA5-0F7384C95995">
+      <bpmndi:BPMNShape id="shape__E826205A-FE75-4901-8AA5-0F7384C95995" bpmnElement="_E826205A-FE75-4901-8AA5-0F7384C95995">
         <dc:Bounds height="56.0" width="56.0" x="664.5" y="205.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__A0815149-ADC8-4A7E-B06E-52ACFF6E0C40" bpmnElement="_A0815149-ADC8-4A7E-B06E-52ACFF6E0C40">
@@ -1187,7 +1182,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
       <bpmndi:BPMNShape id="shape__371E2D52-82BD-492D-9465-7FBEECD9DB1E" bpmnElement="_371E2D52-82BD-492D-9465-7FBEECD9DB1E">
         <dc:Bounds height="56.0" width="56.0" x="846.0" y="256.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_E0EE998D-5AF0-4665-AA0D-DEAF04279E4F">
+      <bpmndi:BPMNShape id="shape__E0EE998D-5AF0-4665-AA0D-DEAF04279E4F" bpmnElement="_E0EE998D-5AF0-4665-AA0D-DEAF04279E4F">
         <dc:Bounds height="56.0" width="56.0" x="457.0" y="507.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__8BA7AB88-C5E1-4523-BDB5-ED3FC00A2078" bpmnElement="_8BA7AB88-C5E1-4523-BDB5-ED3FC00A2078">
@@ -1214,7 +1209,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
       <bpmndi:BPMNShape id="shape__CFEE8A78-2546-4693-9328-0441D5A39E00" bpmnElement="_CFEE8A78-2546-4693-9328-0441D5A39E00">
         <dc:Bounds height="56.0" width="56.0" x="1236.0" y="592.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_2AE92598-1038-4B3C-9F32-5150B27FB0CD">
+      <bpmndi:BPMNShape id="shape__2AE92598-1038-4B3C-9F32-5150B27FB0CD" bpmnElement="_2AE92598-1038-4B3C-9F32-5150B27FB0CD">
         <dc:Bounds height="56.0" width="56.0" x="1101.0" y="1255.5"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape__CC9ED6CE-3A6E-44E1-A00D-38909F49C93B" bpmnElement="_CC9ED6CE-3A6E-44E1-A00D-38909F49C93B">
@@ -1229,7 +1224,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
       <bpmndi:BPMNShape id="shape__BCEE215E-B711-4977-8F94-1F1A4F9A15B5" bpmnElement="_BCEE215E-B711-4977-8F94-1F1A4F9A15B5">
         <dc:Bounds height="102.0" width="154.0" x="556.0" y="484.0"/>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_null" bpmnElement="_EE1F8A0E-220F-4921-B823-6D63AA1B4E13">
+      <bpmndi:BPMNShape id="shape__EE1F8A0E-220F-4921-B823-6D63AA1B4E13" bpmnElement="_EE1F8A0E-220F-4921-B823-6D63AA1B4E13">
         <dc:Bounds height="56.0" width="56.0" x="985.0" y="308.0"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="edge_shape_null_to_shape__CFEE8A78-2546-4693-9328-0441D5A39E00" bpmnElement="_E3710B7E-D2AE-44FE-B383-3640E0047353">
@@ -1245,7 +1240,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
         <di:waypoint xsi:type="dc:Point" x="1052.0" y="285.0"/>
         <di:waypoint xsi:type="dc:Point" x="1264.0" y="284.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape__A0815149-ADC8-4A7E-B06E-52ACFF6E0C40_to_shape_null" bpmnElement="_7B8D3BC1-545C-4718-9A3F-58FFD5D523F6">
+      <bpmndi:BPMNEdge id="edge_shape__A0815149-ADC8-4A7E-B06E-52ACFF6E0C40_to_shape_a" bpmnElement="_7B8D3BC1-545C-4718-9A3F-58FFD5D523F6">
         <di:waypoint xsi:type="dc:Point" x="396.25" y="535.0"/>
         <di:waypoint xsi:type="dc:Point" x="396.0" y="667.0"/>
       </bpmndi:BPMNEdge>
@@ -1292,7 +1287,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
         <di:waypoint xsi:type="dc:Point" x="396.0" y="312.0"/>
         <di:waypoint xsi:type="dc:Point" x="396.25" y="507.0"/>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_shape__A0815149-ADC8-4A7E-B06E-52ACFF6E0C40_to_shape_null" bpmnElement="_5B79D4BD-7F78-4EA5-9C9D-05B6AA605746">
+      <bpmndi:BPMNEdge id="edge_shape__A0815149-ADC8-4A7E-B06E-52ACFF6E0C40_to_shape_x" bpmnElement="_5B79D4BD-7F78-4EA5-9C9D-05B6AA605746">
         <di:waypoint xsi:type="dc:Point" x="424.25" y="535.0"/>
         <di:waypoint xsi:type="dc:Point" x="485.0" y="535.0"/>
       </bpmndi:BPMNEdge>
