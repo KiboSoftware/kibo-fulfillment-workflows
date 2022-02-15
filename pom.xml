@@ -71,6 +71,12 @@
       <version>1.4.10</version>
       <scope>test</scope>
     </dependency>
+      <dependency>
+          <groupId>org.jbpm</groupId>
+          <artifactId>jbpm-test</artifactId>
+          <version>${version.org.kie}</version>
+          <scope>test</scope>
+      </dependency>
   </dependencies>
 
   <build>
