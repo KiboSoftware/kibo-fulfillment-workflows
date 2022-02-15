@@ -205,6 +205,16 @@ public class AFG_Custom_STH_Process_Test extends JbpmJUnitBaseTestCase {
     }
 
     @Test
+    public void pick() {
+        WorkflowProcessInstance wpi = createProcess();
+
+        wpi.signalEvent("picked", null);
+
+        assertNodeActive(wpi.getId(), kieSession, "Wait for Payment Confirmation");
+        assertEquals("INVENTORY_AVAILABLE", wpi.getVariable("currentState"));
+    }
+
+    @Test
     public void fulfill() {
         WorkflowProcessInstance wpi = createProcess();
 
@@ -255,6 +265,8 @@ public class AFG_Custom_STH_Process_Test extends JbpmJUnitBaseTestCase {
 
         assertNodeTriggered(wpi.getId(), "Pre-Accept Shipment", "Accept Shipment");
         assertEquals("PRE_ACCEPT_SHIPMENT", wpi.getVariable("currentState"));
+
+        logger.info("Created process {}", wpi.getProcessName());
 
         return wpi;
     }
