@@ -447,7 +447,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
         <bpmn2:sourceRef>_D38B3BE5-1A96-4661-B140-46677D03578A_backOutputX</bpmn2:sourceRef>
         <bpmn2:targetRef>back</bpmn2:targetRef>
       </bpmn2:dataOutputAssociation>
-      <bpmn2:potentialOwner id="237d64ca-4f21-4f0b-8190-f470f309fba9">
+      <bpmn2:potentialOwner id="_237d64ca-4f21-4f0b-8190-f470f309fba9">
         <bpmn2:resourceAssignmentExpression id="_VVm-X5ZpEeyuA_O7GZLjVA">
           <bpmn2:formalExpression id="_VVm-YJZpEeyuA_O7GZLjVA">#{initiator}</bpmn2:formalExpression>
         </bpmn2:resourceAssignmentExpression>
@@ -516,7 +516,7 @@ System.out.println(kcontext.getVariable("currentState"));
         <bpmn2:sourceRef>_DFA9CBD1-0229-49BB-B232-3117A665608A_shipmentAcceptedOutputX</bpmn2:sourceRef>
         <bpmn2:targetRef>shipmentAccepted</bpmn2:targetRef>
       </bpmn2:dataOutputAssociation>
-      <bpmn2:potentialOwner id="0dde4aa4-68a8-4285-99dd-bee784846038">
+      <bpmn2:potentialOwner id="_0dde4aa4-68a8-4285-99dd-bee784846038">
         <bpmn2:resourceAssignmentExpression id="_VVnlVpZpEeyuA_O7GZLjVA">
           <bpmn2:formalExpression id="_VVnlV5ZpEeyuA_O7GZLjVA">#{initiator}</bpmn2:formalExpression>
         </bpmn2:resourceAssignmentExpression>
@@ -625,7 +625,7 @@ System.out.println(kcontext.getVariable("currentState"));
         <bpmn2:sourceRef>_7E653F83-D674-4806-9678-349734B1E6DE_backOutputX</bpmn2:sourceRef>
         <bpmn2:targetRef>back</bpmn2:targetRef>
       </bpmn2:dataOutputAssociation>
-      <bpmn2:potentialOwner id="1c2ee6b8-6594-4c81-8046-8b2077d98a89">
+      <bpmn2:potentialOwner id="_1c2ee6b8-6594-4c81-8046-8b2077d98a89">
         <bpmn2:resourceAssignmentExpression id="_VVnlbpZpEeyuA_O7GZLjVA">
           <bpmn2:formalExpression id="_VVnlb5ZpEeyuA_O7GZLjVA">#{initiator}</bpmn2:formalExpression>
         </bpmn2:resourceAssignmentExpression>
@@ -740,7 +740,7 @@ System.out.println(kcontext.getVariable("currentState"));
         <bpmn2:sourceRef>_7BA67831-15C6-42D1-8556-3535D7DCBB88_backOutputX</bpmn2:sourceRef>
         <bpmn2:targetRef>back</bpmn2:targetRef>
       </bpmn2:dataOutputAssociation>
-      <bpmn2:potentialOwner id="ee784439-27b3-415a-925c-4f8a55714804">
+      <bpmn2:potentialOwner id="_ee784439-27b3-415a-925c-4f8a55714804">
         <bpmn2:resourceAssignmentExpression id="_VVnlipZpEeyuA_O7GZLjVA">
           <bpmn2:formalExpression id="_VVnli5ZpEeyuA_O7GZLjVA">#{initiator}</bpmn2:formalExpression>
         </bpmn2:resourceAssignmentExpression>
@@ -841,7 +841,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
         <bpmn2:sourceRef>_6435A331-0795-4719-989B-F9FB69570FC5_backOutputX</bpmn2:sourceRef>
         <bpmn2:targetRef>back</bpmn2:targetRef>
       </bpmn2:dataOutputAssociation>
-      <bpmn2:potentialOwner id="1625eb34-e2fc-45ec-a04f-fb90fd354973">
+      <bpmn2:potentialOwner id="_1625eb34-e2fc-45ec-a04f-fb90fd354973">
         <bpmn2:resourceAssignmentExpression id="_VVnlppZpEeyuA_O7GZLjVA">
           <bpmn2:formalExpression id="_VVnlp5ZpEeyuA_O7GZLjVA">#{initiator}</bpmn2:formalExpression>
         </bpmn2:resourceAssignmentExpression>
@@ -932,7 +932,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
         <bpmn2:sourceRef>_B8B9C3CA-5BC8-4476-BA22-1D4324FAC12B_stockLevelOutputX</bpmn2:sourceRef>
         <bpmn2:targetRef>stockLevel</bpmn2:targetRef>
       </bpmn2:dataOutputAssociation>
-      <bpmn2:potentialOwner id="84128039-3e93-4052-ba60-a7f234de9b8c">
+      <bpmn2:potentialOwner id="_84128039-3e93-4052-ba60-a7f234de9b8c">
         <bpmn2:resourceAssignmentExpression id="_VVnlvpZpEeyuA_O7GZLjVA">
           <bpmn2:formalExpression id="_VVnlv5ZpEeyuA_O7GZLjVA">#{initiator}</bpmn2:formalExpression>
         </bpmn2:resourceAssignmentExpression>
