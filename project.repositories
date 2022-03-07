@@ -3,24 +3,24 @@
     <repository>
       <include>true</include>
       <metadata>
-        <id>ng-releases</id>
-        <url>http://ng-repo.dev.kibocommerce.com:8081/repository/ng-maven-releases/</url>
-        <source>SETTINGS</source>
+        <id>local</id>
+        <url>/Users/shu.hao/.m2/repository</url>
+        <source>LOCAL</source>
       </metadata>
     </repository>
     <repository>
       <include>true</include>
       <metadata>
         <id>ng-snapshots</id>
-        <url>http://ng-repo.dev.kibocommerce.com:8081/repository/ng-maven-snapshots/</url>
+        <url>http://ng-repo.dev.kibocommerce.com:8081/repository/ng-maven-snapshots</url>
         <source>SETTINGS</source>
       </metadata>
     </repository>
     <repository>
       <include>true</include>
       <metadata>
-        <id>maven.java.net</id>
-        <url>http://download.java.net/maven/2</url>
+        <id>ng-releases</id>
+        <url>http://ng-repo.dev.kibocommerce.com:8081/repository/ng-maven-releases</url>
         <source>SETTINGS</source>
       </metadata>
     </repository>
@@ -30,22 +30,6 @@
         <id>central</id>
         <url>https://repo.maven.apache.org/maven2</url>
         <source>PROJECT</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>ng-central</id>
-        <url>http://ng-repo.dev.kibocommerce.com:8081/repository/ng-maven-central/</url>
-        <source>SETTINGS</source>
-      </metadata>
-    </repository>
-    <repository>
-      <include>true</include>
-      <metadata>
-        <id>local</id>
-        <url>/opt/jboss/.m2/repository</url>
-        <source>LOCAL</source>
       </metadata>
     </repository>
   </repositories>
