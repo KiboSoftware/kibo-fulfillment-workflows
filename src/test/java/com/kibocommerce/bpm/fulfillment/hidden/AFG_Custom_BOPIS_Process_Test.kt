@@ -1,5 +1,6 @@
 package com.kibocommerce.bpm.fulfillment.hidden
 
+import com.kibocommerce.bpm.fulfillment.assertCurrentState
 import org.jbpm.test.JbpmJUnitBaseTestCase
 import org.junit.Before
 import org.junit.Test
@@ -29,9 +30,9 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
-        
+
         assertNodeActive(wpi.id, kieSession, "Print Pick List")
-        assertEquals("ACCEPTED_SHIPMENT", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "ACCEPTED_SHIPMENT")
     }
 
     @Test
@@ -41,7 +42,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         acceptShipment(wpi, false)
 
         assertProcessInstanceActive(wpi.id, kieSession)
-        assertEquals("REJECTED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "REJECTED")
     }
 
     @Test
@@ -52,7 +53,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         printPickList(wpi)
 
         assertNodeActive(wpi.id, kieSession, "Validate Items In Stock")
-        assertEquals("PROCESSING_PICK_LIST", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "PROCESSING_PICK_LIST")
     }
 
     @Test
@@ -64,7 +65,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         validateStock(wpi, "IN_STOCK", null)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
-        assertEquals("INVENTORY_AVAILABLE", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "INVENTORY_AVAILABLE")
     }
 
     @Test
@@ -76,7 +77,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         validateStock(wpi, "PARTIAL_STOCK", false)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
-        assertEquals("PARTIAL_INVENTORY_NOPE", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "PARTIAL_INVENTORY_NOPE")
     }
 
     @Test
@@ -88,7 +89,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         validateStock(wpi, "PARTIAL_STOCK", true)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Transfer")
-        assertEquals("WAITING_FOR_TRANSFER", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "WAITING_FOR_TRANSFER")
     }
 
     @Test
@@ -100,7 +101,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         validateStock(wpi, "NO_STOCK", false)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
-        assertEquals("INVENTORY_NOPE", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "INVENTORY_NOPE")
     }
 
     @Test
@@ -112,7 +113,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         validateStock(wpi, "NO_STOCK", true)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Transfer")
-        assertEquals("WAITING_FOR_TRANSFER", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "WAITING_FOR_TRANSFER")
     }
 
     @Test
@@ -125,7 +126,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         waitForTransfer(wpi)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
-        assertEquals("ALL_TRANSFERS_RECEIVED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "ALL_TRANSFERS_RECEIVED")
     }
 
     @Test
@@ -138,7 +139,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         confirmPayment(wpi)
 
         assertNodeActive(wpi.id, kieSession, "Customer Pickup")
-        assertEquals("PAYMENT_CONFIRMED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "PAYMENT_CONFIRMED")
     }
 
     @Test
@@ -152,7 +153,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         customerPickup(wpi, null)
 
         assertProcessInstanceNotActive(wpi.id, kieSession)
-        assertEquals("COMPLETED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "COMPLETED")
     }
 
     @Test
@@ -166,7 +167,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         customerPickup(wpi, false)
 
         assertProcessInstanceNotActive(wpi.id, kieSession)
-        assertEquals("CANCELED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "CANCELED")
     }
 
     @Test
@@ -176,7 +177,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         wpi.signalEvent("picked", null)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
-        assertEquals("INVENTORY_AVAILABLE", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "INVENTORY_AVAILABLE")
     }
 
     @Test
@@ -187,7 +188,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         wpi.signalEvent("fulfilled", null)
 
         assertProcessInstanceNotActive(wpi.id, kieSession)
-        assertEquals("COMPLETED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "COMPLETED")
     }
 
     @Test
@@ -198,7 +199,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         wpi.signalEvent("canceled", null)
 
         assertProcessInstanceNotActive(wpi.id, kieSession)
-        assertEquals("CANCELED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "CANCELED")
     }
 
     @Test
@@ -209,7 +210,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         wpi.signalEvent("customer_care", null)
 
         assertProcessInstanceNotActive(wpi.id, kieSession)
-        assertEquals("CUSTOMER_CARE", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "CUSTOMER_CARE")
     }
 
     private fun createProcess(): WorkflowProcessInstance {
@@ -243,6 +244,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         assertEquals(1, tasks.size)
         val task = tasks[0]
         assertEquals(expectedTaskName, task.name)
+
         taskService!!.start(task.id, "john")
         val data = mapOf("shipmentAccepted" to shipmentAccepted)
         taskService!!.complete(task.id, "john", data)
@@ -258,6 +260,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         assertEquals(1, tasks.size)
         val task = tasks[0]
         assertEquals(expectedTaskName, task.name)
+
         taskService!!.start(task.id, "john")
         taskService!!.complete(task.id, "john", HashMap())
     }
@@ -272,6 +275,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         assertEquals(1, tasks.size)
         val task = tasks[0]
         assertEquals(expectedTaskName, task.name)
+
         taskService!!.start(task.id, "john")
         val data = mapOf(
             "stockLevel" to stockLevel,
@@ -290,6 +294,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         assertEquals(1, tasks.size)
         val task = tasks[0]
         assertEquals(expectedTaskName, task.name)
+
         taskService!!.start(task.id, "john")
         taskService!!.complete(task.id, "john", HashMap())
     }
@@ -304,6 +309,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         assertEquals(1, tasks.size)
         val task = tasks[0]
         assertEquals(expectedTaskName, task.name)
+
         taskService!!.start(task.id, "john")
         taskService!!.complete(task.id, "john", HashMap())
     }
@@ -318,6 +324,7 @@ class AFG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         assertEquals(1, tasks.size)
         val task = tasks[0]
         assertEquals(expectedTaskName, task.name)
+
         taskService!!.start(task.id, "john")
         val data = mapOf("customerAccepted" to customerAccepted)
         taskService!!.complete(task.id, "john", data)

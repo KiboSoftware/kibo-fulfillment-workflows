@@ -1,5 +1,6 @@
 package com.kibocommerce.bpm.fulfillment.hidden
 
+import com.kibocommerce.bpm.fulfillment.assertCurrentState
 import org.jbpm.test.JbpmJUnitBaseTestCase
 import org.junit.Before
 import org.junit.Test
@@ -28,9 +29,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
         
         acceptShipment(wpi, true)
-        
+
         assertNodeActive(wpi.id, kieSession, "Validate Items In Stock")
-        assertEquals("ACCEPTED_SHIPMENT", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "ACCEPTED_SHIPMENT")
     }
 
     @Test
@@ -38,9 +39,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
         
         acceptShipment(wpi, false)
-        
+
         assertProcessInstanceNotActive(wpi.id, kieSession)
-        assertEquals("REASSIGN_SHIPMENT", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "REASSIGN_SHIPMENT")
     }
 
     @Test
@@ -49,9 +50,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         
         acceptShipment(wpi, true)
         validateStock(wpi, "IN_STOCK")
-        
+
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
-        assertEquals("INVENTORY_AVAILABLE", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "INVENTORY_AVAILABLE")
     }
 
     @Test
@@ -60,9 +61,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         
         acceptShipment(wpi, true)
         validateStock(wpi, "PARTIAL_STOCK")
-        
+
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
-        assertEquals("PARTIAL_INVENTORY_NOPE", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "PARTIAL_INVENTORY_NOPE")
     }
 
     @Test
@@ -71,9 +72,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         
         acceptShipment(wpi, true)
         validateStock(wpi, "NO_STOCK")
-        
+
         assertProcessInstanceNotActive(wpi.id, kieSession)
-        assertEquals("REASSIGN_SHIPMENT", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "REASSIGN_SHIPMENT")
     }
 
     @Test
@@ -83,9 +84,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         acceptShipment(wpi, true)
         validateStock(wpi, "IN_STOCK")
         confirmPayment(wpi, null)
-        
+
         assertNodeActive(wpi.id, kieSession, "Print Packing Slip")
-        assertEquals("PAYMENT_CONFIRMED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "PAYMENT_CONFIRMED")
     }
 
     @Test
@@ -95,9 +96,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         acceptShipment(wpi, true)
         validateStock(wpi, "IN_STOCK")
         confirmPayment(wpi, true)
-        
+
         assertNodeActive(wpi.id, kieSession, "Validate Items In Stock")
-        assertEquals("ACCEPTED_SHIPMENT", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "ACCEPTED_SHIPMENT")
     }
 
     @Test
@@ -108,9 +109,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         validateStock(wpi, "IN_STOCK")
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
-        
+
         assertNodeActive(wpi.id, kieSession, "Prepare for Shipment")
-        assertEquals("PRINTED_PACKING_SLIP", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "PRINTED_PACKING_SLIP")
     }
 
     @Test
@@ -121,9 +122,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         validateStock(wpi, "IN_STOCK")
         confirmPayment(wpi, null)
         printPackingSlip(wpi, true)
-        
+
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
-        assertEquals("INVENTORY_AVAILABLE", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "INVENTORY_AVAILABLE")
     }
 
     @Test
@@ -135,9 +136,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
         prepareForShipment(wpi, null)
-        
+
         assertNodeActive(wpi.id, kieSession, "Out for Delivery")
-        assertEquals("SHIPPED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "SHIPPED")
     }
 
     @Test
@@ -149,9 +150,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
         prepareForShipment(wpi, true)
-        
+
         assertNodeActive(wpi.id, kieSession, "Print Packing Slip")
-        assertEquals("PAYMENT_CONFIRMED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "PAYMENT_CONFIRMED")
     }
 
     @Test
@@ -164,9 +165,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         printPackingSlip(wpi, null)
         prepareForShipment(wpi, null)
         deliver(wpi, null)
-        
+
         assertProcessInstanceNotActive(wpi.id, kieSession)
-        assertEquals("COMPLETED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "COMPLETED")
     }
 
     @Test
@@ -179,9 +180,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         printPackingSlip(wpi, null)
         prepareForShipment(wpi, null)
         deliver(wpi, true)
-        
+
         assertNodeActive(wpi.id, kieSession, "Prepare for Shipment")
-        assertEquals("PRINTED_PACKING_SLIP", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "PRINTED_PACKING_SLIP")
     }
 
     @Test
@@ -189,7 +190,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
         wpi.signalEvent("picked", null)
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
-        assertEquals("INVENTORY_AVAILABLE", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "INVENTORY_AVAILABLE")
     }
 
     @Test
@@ -198,9 +199,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         
         acceptShipment(wpi, true)
         wpi.signalEvent("fulfilled", null)
-        
+
         assertProcessInstanceNotActive(wpi.id, kieSession)
-        assertEquals("COMPLETED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "COMPLETED")
     }
 
     @Test
@@ -209,9 +210,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         
         acceptShipment(wpi, true)
         wpi.signalEvent("canceled", null)
-        
+
         assertProcessInstanceNotActive(wpi.id, kieSession)
-        assertEquals("CANCELED", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "CANCELED")
     }
 
     @Test
@@ -220,9 +221,9 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         
         acceptShipment(wpi, true)
         wpi.signalEvent("customer_care", null)
-        
+
         assertProcessInstanceNotActive(wpi.id, kieSession)
-        assertEquals("CUSTOMER_CARE", wpi.getVariable("currentState"))
+        assertCurrentState(wpi, "CUSTOMER_CARE")
     }
 
     private fun createProcess(): WorkflowProcessInstance {
@@ -256,6 +257,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         assertEquals(1, tasks.size)
         val task = tasks[0]
         assertEquals(expectedTaskName, task.name)
+
         taskService!!.start(task.id, "john")
         val data = mapOf("shipmentAccepted" to shipmentAccepted)
         taskService!!.complete(task.id, "john", data)
@@ -271,6 +273,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         assertEquals(1, tasks.size)
         val task = tasks[0]
         assertEquals(expectedTaskName, task.name)
+
         taskService!!.start(task.id, "john")
         val data = mapOf(
             "stockLevel" to stockLevel,
@@ -288,6 +291,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         assertEquals(1, tasks.size)
         val task = tasks[0]
         assertEquals(expectedTaskName, task.name)
+
         taskService!!.start(task.id, "john")
         val data = mapOf("back" to back)
         taskService!!.complete(task.id, "john", data)
@@ -303,6 +307,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         assertEquals(1, tasks.size)
         val task = tasks[0]
         assertEquals(expectedTaskName, task.name)
+
         taskService!!.start(task.id, "john")
         val data = mapOf("back" to back)
         taskService!!.complete(task.id, "john", data)
@@ -318,6 +323,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         assertEquals(1, tasks.size)
         val task = tasks[0]
         assertEquals(expectedTaskName, task.name)
+
         taskService!!.start(task.id, "john")
         val data = mapOf("back" to back)
         taskService!!.complete(task.id, "john", data)
@@ -333,6 +339,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         assertEquals(1, tasks.size)
         val task = tasks[0]
         assertEquals(expectedTaskName, task.name)
+
         taskService!!.start(task.id, "john")
         val data = mapOf("back" to back)
         taskService!!.complete(task.id, "john", data)
