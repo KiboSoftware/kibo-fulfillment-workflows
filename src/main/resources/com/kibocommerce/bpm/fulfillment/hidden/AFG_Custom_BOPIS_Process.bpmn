@@ -323,7 +323,7 @@
       <bpmn2:incoming>_26C52667-311E-49E9-B8D8-13CA5946A643</bpmn2:incoming>
       <bpmn2:outgoing>_3E6F0A1F-DA60-473B-91ED-2EB99DB16651</bpmn2:outgoing>
       <bpmn2:script><![CDATA[kcontext.setVariable("currentState","REJECTED");
-System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
+]]></bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:scriptTask id="_F9078E58-DCBC-4992-8641-CE44ED009A0F" name="Complete" scriptFormat="http://www.java.com/java">
       <bpmn2:extensionElements>
@@ -334,7 +334,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
       <bpmn2:incoming>_375F3BBE-32AA-4F8F-8C2C-EB0F2E6288D3</bpmn2:incoming>
       <bpmn2:outgoing>_2EEDA63E-5DFD-4280-90C0-BCDED6C44FB7</bpmn2:outgoing>
       <bpmn2:script><![CDATA[kcontext.setVariable("currentState","COMPLETED");
-System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
+]]></bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:endEvent id="_E125EE57-815E-4D37-9623-7B702CB47354" name="canceled">
       <bpmn2:extensionElements>
@@ -382,11 +382,11 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
         </drools:metaData>
         <drools:onEntry-script scriptFormat="http://www.java.com/java">
           <drools:script><![CDATA[kcontext.setVariable("currentState","WAITING_FOR_TRANSFER");
-System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
+]]></drools:script>
         </drools:onEntry-script>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
           <drools:script><![CDATA[kcontext.setVariable("currentState","ALL_TRANSFERS_RECEIVED");
-System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
+]]></drools:script>
         </drools:onExit-script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_2DB04B54-87BB-48A8-A6B5-123913AC912C</bpmn2:incoming>
@@ -440,7 +440,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
       <bpmn2:script><![CDATA[if (currentState == null || currentState.equals("")) {
   kcontext.setVariable("currentState","PRE_ACCEPT_SHIPMENT");
 }
-System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
+]]></bpmn2:script>
     </bpmn2:scriptTask>
     <bpmn2:exclusiveGateway id="_9D88D3BC-9D64-4116-8381-23E78B6A2A74" gatewayDirection="Converging">
       <bpmn2:incoming>_35D86126-5A58-418F-B336-B442A49A095C</bpmn2:incoming>
@@ -466,7 +466,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
           <drools:script><![CDATA[if (shipmentAccepted) {
 kcontext.setVariable("currentState","ACCEPTED_SHIPMENT");
-System.out.println(kcontext.getVariable("currentState"));
+
 }]]></drools:script>
         </drools:onExit-script>
       </bpmn2:extensionElements>
@@ -581,7 +581,7 @@ Required?]]></drools:metaValue>
         </drools:metaData>
         <drools:onExit-script scriptFormat="http://www.java.com/java">
           <drools:script><![CDATA[kcontext.setVariable("currentState","PROCESSING_PICK_LIST");
-System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
+]]></drools:script>
         </drools:onExit-script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_4282F475-FDE4-48F7-892F-736F404D2C89</bpmn2:incoming>
@@ -655,7 +655,7 @@ kcontext.setVariable("currentState","CANCELED");
 } else {
 kcontext.setVariable("currentState","COMPLETED");
 }
-System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
+]]></drools:script>
         </drools:onExit-script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_81726D61-7AF8-4FDA-AAB4-F8DC78AF41DC</bpmn2:incoming>
@@ -744,7 +744,7 @@ kcontext.setVariable("currentState","PARTIAL_INVENTORY_NOPE");
 } else if ("NO_STOCK".equals(stockLevel)) {
 kcontext.setVariable("currentState","INVENTORY_NOPE");
 }
-System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
+]]></drools:script>
         </drools:onExit-script>
       </bpmn2:extensionElements>
       <bpmn2:incoming>_533EEE66-8EF1-4ACE-A9D8-7E4FE2E0C181</bpmn2:incoming>
@@ -917,7 +917,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></drools:script>
         <bpmn2:incoming>_55109479-9033-466F-A138-2A4893C918E5</bpmn2:incoming>
         <bpmn2:outgoing>_512C7A4C-8DDB-40E6-A0F4-43690E4DAF65</bpmn2:outgoing>
         <bpmn2:script><![CDATA[kcontext.setVariable("currentState","CANCELED");
-System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
+]]></bpmn2:script>
       </bpmn2:scriptTask>
     </bpmn2:subProcess>
     <bpmn2:subProcess id="_4386F2C9-548D-4214-87B9-439ECD9098F3" name="Customer Care Event" triggeredByEvent="true">
@@ -968,7 +968,7 @@ System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
         <bpmn2:incoming>_3255E761-C658-4ABF-B158-BF4F709B5020</bpmn2:incoming>
         <bpmn2:outgoing>_04DBBD2E-72C5-4CA8-BFE7-B8237F69844B</bpmn2:outgoing>
         <bpmn2:script><![CDATA[kcontext.setVariable("currentState","CUSTOMER_CARE");
-System.out.println(kcontext.getVariable("currentState"));]]></bpmn2:script>
+]]></bpmn2:script>
       </bpmn2:scriptTask>
     </bpmn2:subProcess>
     <bpmn2:boundaryEvent id="_48E79953-8778-4F96-9511-FD1370E2ED3D" drools:dockerinfo="112.2^-28.0|" drools:boundaryca="true" attachedToRef="_DFA9CBD1-0229-49BB-B232-3117A665608A">
