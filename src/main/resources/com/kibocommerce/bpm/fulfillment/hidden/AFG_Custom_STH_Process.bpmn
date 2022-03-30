@@ -104,7 +104,7 @@
   <bpmn2:signal id="_8c45e5e3-5cbc-3441-a970-964edc5752b9" name="fulfilled"/>
   <bpmn2:signal id="_da084524-3149-3123-a57f-55631d22eec8" name="picked"/>
   <bpmn2:signal id="_c7537d6d-48ec-3261-b49c-09a9f284bd45" name="rejected"/>
-  <bpmn2:process id="AFG_Custom_STH_Process" drools:packageName="com.kibocommerce.bpm.fulfillment.hidden" drools:version="1.2212.0" drools:adHoc="false" name="AFG Custom STH Process" isExecutable="true" processType="Public">
+  <bpmn2:process id="AFG_Custom_STH_Process" drools:packageName="com.kibocommerce.bpm.fulfillment.hidden" drools:version="1.2214.0" drools:adHoc="false" name="AFG Custom STH Process" isExecutable="true" processType="Public">
     <bpmn2:documentation id="_66bxQaVhEeyKzaz8ycfEKg"><![CDATA[Custom Ship To Home process of AFG]]></bpmn2:documentation>
     <bpmn2:extensionElements>
       <drools:metaData name="customDescription">
