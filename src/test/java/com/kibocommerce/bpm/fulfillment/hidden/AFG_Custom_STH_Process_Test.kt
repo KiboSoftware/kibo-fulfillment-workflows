@@ -60,6 +60,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
@@ -71,6 +72,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "PARTIAL_STOCK", null)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
@@ -82,6 +84,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "PARTIAL_STOCK", true)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Transfer")
@@ -93,6 +96,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "NO_STOCK", null)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
@@ -104,6 +108,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "NO_STOCK", true)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Transfer")
@@ -115,6 +120,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "NO_STOCK", true)
         waitForTransfer(wpi)
 
@@ -127,6 +133,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
 
@@ -139,6 +146,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, true)
 
@@ -151,6 +159,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
@@ -164,6 +173,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
         printPackingSlip(wpi, true)
@@ -177,6 +187,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
@@ -191,6 +202,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
@@ -205,6 +217,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
@@ -220,6 +233,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         val wpi = createProcess()
 
         acceptShipment(wpi, true)
+        printPickList(wpi)
         validateStock(wpi, "IN_STOCK", null)
         confirmPayment(wpi, null)
         printPackingSlip(wpi, null)
