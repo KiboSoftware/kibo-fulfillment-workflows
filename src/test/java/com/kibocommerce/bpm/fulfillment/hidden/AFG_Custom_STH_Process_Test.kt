@@ -30,7 +30,7 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         
         acceptShipment(wpi, true)
 
-        assertNodeActive(wpi.id, kieSession, "Validate Items In Stock")
+        assertNodeActive(wpi.id, kieSession, "Print Pick List")
         assertCurrentState(wpi, "ACCEPTED_SHIPMENT")
     }
 
@@ -42,6 +42,17 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
 
         assertProcessInstanceNotActive(wpi.id, kieSession)
         assertCurrentState(wpi, "REASSIGN_SHIPMENT")
+    }
+
+    @Test
+    fun printPickList() {
+        val wpi = createProcess()
+
+        acceptShipment(wpi, true)
+        printPickList(wpi)
+
+        assertNodeActive(wpi.id, kieSession, "Validate Items In Stock")
+        assertCurrentState(wpi, "PROCESSING_PICK_LIST")
     }
 
     @Test
@@ -393,6 +404,21 @@ class AFG_Custom_STH_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         taskService!!.start(task.id, "john")
         val data = mapOf("back" to back)
         taskService!!.complete(task.id, "john", data)
+    }
+
+    private fun printPickList(wpi: WorkflowProcessInstance) {
+        val expectedTaskName = "Print Pick List"
+
+        assertProcessInstanceActive(wpi.id, kieSession)
+        assertNodeActive(wpi.id, kieSession, expectedTaskName)
+
+        val tasks = taskService!!.getTasksByStatusByProcessInstanceId(wpi.id, listOf(Status.Reserved), "en-UK")
+        assertEquals(1, tasks.size)
+        val task = tasks[0]
+        assertEquals(expectedTaskName, task.name)
+
+        taskService!!.start(task.id, "john")
+        taskService!!.complete(task.id, "john", HashMap())
     }
 
     companion object {
