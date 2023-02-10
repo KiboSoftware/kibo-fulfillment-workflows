@@ -88,7 +88,7 @@ class TLG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         validateStock(wpi, "PARTIAL_STOCK", true)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
-        assertCurrentState(wpi, "WAITING_FOR_TRANSFER")
+        assertCurrentState(wpi, "WAITING_FOR_PAYMENT_PRE_TRANSFER")
     }
 
     @Test
@@ -112,7 +112,7 @@ class TLG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         validateStock(wpi, "NO_STOCK", true)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
-        assertCurrentState(wpi, "WAITING_FOR_TRANSFER")
+        assertCurrentState(wpi, "WAITING_FOR_PAYMENT_PRE_TRANSFER")
     }
 
     @Test
