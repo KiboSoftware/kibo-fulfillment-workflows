@@ -64,7 +64,7 @@ class TLG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         validateStock(wpi, "IN_STOCK", null)
 
         assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
-        assertCurrentState(wpi, "VALIDATE_STOCK")
+        assertCurrentState(wpi, "INVENTORY_AVAILABLE")
     }
 
     @Test
@@ -74,9 +74,8 @@ class TLG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         acceptShipment(wpi, true)
         printPickList(wpi)
         validateStock(wpi, "PARTIAL_STOCK", false)
-        confirmPayment(wpi)
 
-        assertNodeActive(wpi.id, kieSession, "Customer Pickup")
+        assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
         assertCurrentState(wpi, "PARTIAL_INVENTORY_NOPE")
     }
 
@@ -87,9 +86,8 @@ class TLG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         acceptShipment(wpi, true)
         printPickList(wpi)
         validateStock(wpi, "PARTIAL_STOCK", true)
-        confirmPayment(wpi)
 
-        assertNodeActive(wpi.id, kieSession, "Wait for Transfer")
+        assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
         assertCurrentState(wpi, "WAITING_FOR_TRANSFER")
     }
 
@@ -100,9 +98,8 @@ class TLG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         acceptShipment(wpi, true)
         printPickList(wpi)
         validateStock(wpi, "NO_STOCK", false)
-        confirmPayment(wpi)
 
-        assertNodeActive(wpi.id, kieSession, "Customer Pickup")
+        assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
         assertCurrentState(wpi, "INVENTORY_NOPE")
     }
 
@@ -113,9 +110,8 @@ class TLG_Custom_BOPIS_Process_Test : JbpmJUnitBaseTestCase(true, false) {
         acceptShipment(wpi, true)
         printPickList(wpi)
         validateStock(wpi, "NO_STOCK", true)
-        confirmPayment(wpi)
 
-        assertNodeActive(wpi.id, kieSession, "Wait for Transfer")
+        assertNodeActive(wpi.id, kieSession, "Wait for Payment Confirmation")
         assertCurrentState(wpi, "WAITING_FOR_TRANSFER")
     }
 
