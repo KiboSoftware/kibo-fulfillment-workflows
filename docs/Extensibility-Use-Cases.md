@@ -24,7 +24,7 @@ The following general project setup will allow you to use the __Rest__ work item
 
 1. Open your custom project.
 
-1. Navigate to *Settings > Service Tasks*.
+1. Navigate to *Settings > Custom Tasks*.
 
 1. Within *Service Tasks*, click the __Rest__ service task __Install__ button to enable its use within the designer.
 
@@ -436,6 +436,7 @@ This example customization will illustrate use of the __Rest__ work item within 
 
     * Place the event below the new __Throwing Intermediate Signal__ event, aligned with __Diverging Exclusive Gateway__ (g2).
     * Set a new `forecast_received` signal reference in the *Implementation/Execution > Signal* section of the signal event properties editor.
+	* Add a sequence flow from the __Throwing Intermediate Signal__ event to the new __Catching Intermediate Signal__ event.
     * Add a sequence flow from the new __Catching Intermediate Signal__ event to __Diverging Exclusive Gateway__ (g2).
 
 1. Complete implementation of the __Get Forecast Sub-process__:
