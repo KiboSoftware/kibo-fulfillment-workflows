@@ -123,14 +123,14 @@ This example customization will illustrate use of the __Rest__ work item within 
 
 Before proceeding, please [sign up](https://openweathermap.org/home/sign_up) for a free OpenWeather account in order to get a valid API key.
 
-1. Within your custom project, open the __[FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn)__ workflow.
+1. Within your custom project, open the __[FulfillmentProcess-STH](https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn)__ workflow.
 
 1. Click the __Copy__ button, provide a new name and select your custom package:
 
     * __New Name:__ YOUR_CUSTOM_SYNC_WORKFLOW_NAME
     * __Package:__ YOUR_DEVCENTER_ACCOUNT_KEY
     
-1. Close the design view of the __[FulfillmentProcess-STH](https://github.kibocommerce.com/EcommNG/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn)__ workflow and open the new __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__ workflow.
+1. Close the design view of the __[FulfillmentProcess-STH](https://github.com/Kibo-UCP/Kibo.FulfillmentWorkflows/blob/develop/src/main/resources/com/kibocommerce/bpm/fulfillment/FulfillmentProcess-STH.bpmn)__ workflow and open the new __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__ workflow.
 
 1. Within the design view of __YOUR_CUSTOM_SYNC_WORKFLOW_NAME__, change the process *Name*, *ID* and *Package* properties.
 
@@ -498,3 +498,29 @@ This example customization will illustrate use of the __Rest__ work item within 
 # In a BPM workflow, signal to advance when stopped at a user task
 
 This use case will illustrate how to move a process to the next step when stopped at a human user task using an external signal.
+
+
+
+Refer the above diagram of process workflow and look for __Fulfullied Signal__.
+
+Follow the steps to add Signal in workflow.
+
+1. From the *Intermediate Events* section of the toolbar panel, need to drag a __Catching Intermediate Signal__ event onto the process design canvas.
+
+	* Place the event below the __Diverging Parallel Gateway__, just after the __Pre-Accept Shipment User Task__.
+    * Set a new `fulfilled` signal reference in the *Implementation/Execution > Signal* section of the signal event properties editor.
+	* Add a sequence flow from the __Parallel Gateway__ event to the new __Catching Intermediate Signal__ event.
+    * Add a sequence flow from the new __Catching Intermediate Signal__ event to __Diverging Exclusive Gateway__ which is placed before __Complete User Task__.
+	
+1. Save your process changes and close the design view.
+
+1. Deploy your custom project and test creating a new instance of process with ID: __YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_SYNC_WORKFLOW_NAME__.
+
+1. Once you have a new process instance created.
+
+1. Navigate to the *Menu > Manage > Process Instances* section of Business Central.
+
+	* Once redirected to the *Manage Process Instances* section of Business Central, click on __Actions option of your process instance.
+	* From the Actions menu, select __Signal__ option.
+	* Then __Signaling Process Instance__ window is opened. Pass __Signal Name as `fulfilled` and click on Signal button.
+	* From the process instance detail view, select Diagram and review the current state of workflow execution. It is showing as __Completed.
