@@ -499,6 +499,7 @@ This example customization will illustrate use of the __Rest__ work item within 
 
 This use case will illustrate how to move a process to the next step when stopped at a human user task using an external signal.
 
+![image](https://user-images.githubusercontent.com/83947110/236483951-92d9200f-d9d9-4eac-84ff-ce8a45e1a6c3.png)
 
 
 Refer the above diagram of process workflow and look for __Fulfullied Signal__.
