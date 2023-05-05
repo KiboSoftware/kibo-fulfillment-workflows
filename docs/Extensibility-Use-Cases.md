@@ -516,11 +516,9 @@ Follow the steps to add Signal in workflow.
 
 1. Deploy your custom project and test creating a new instance of process with ID: __YOUR_DEVCENTER_ACCOUNT_KEY.YOUR_CUSTOM_SYNC_WORKFLOW_NAME__.
 
-1. Once you have a new process instance created.
-
-1. Navigate to the *Menu > Manage > Process Instances* section of Business Central.
+1. Once you have a new process instance created, navigate to the *Menu > Manage > Process Instances* section of Business Central.
 
 	* Once redirected to the *Manage Process Instances* section of Business Central, click on __Actions option of your process instance.
 	* From the Actions menu, select __Signal__ option.
-	* Then __Signaling Process Instance__ window is opened. Pass __Signal Name as `fulfilled` and click on Signal button.
-	* From the process instance detail view, select Diagram and review the current state of workflow execution. It is showing as __Completed.
+	* Then __Signaling Process Instance__ window is opened. Pass __Signal__ Name as `fulfilled` and click on Signal button.
+	* From the process instance detail view, select Diagram and review the current state of workflow execution. It is showing as __Completed__.
