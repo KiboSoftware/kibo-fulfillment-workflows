@@ -1,0 +1,27 @@
+[
+        [
+            "name" : "CurrentWeather",
+            "displayName" : "CurrentWeather",
+            "category" : "openweathermap-workitem",
+            "description" : "",
+            "defaultHandler" : "mvel: new org.jbpm.process.workitem.owm.CurrentWeatherWorkitemHandler(\"apiKey\")",
+            "documentation" : "openweathermap-workitem/index.html",
+
+            "parameters" : [
+                                "CityName" : new StringDataType()
+                ,"CountryCode" : new StringDataType()
+
+            ],
+            "results" : [
+                                "CurrentWeatherData" : new StringDataType()
+
+            ],
+            "mavenDependencies" : [
+                                 "org.jbpm.contrib:openweathermap-workitem:7.73.0.Final"
+
+            ],
+            "icon" : "CurrentWeather.png"
+
+        ]
+
+]
