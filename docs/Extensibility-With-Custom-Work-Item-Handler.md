@@ -98,7 +98,7 @@ In both methods, the WorkItem parameter contains any of the parameters entered i
 	
 ## Work item definitions
 
-Custom work item handler implemetation requires a work item definition (WID) file to identify the data fields to show in Business Central and accept API calls. The WID file is a mapping between user interactions with jBPM process Manager and the data that is passed to the work item handler. 
+Custom work item handler implementation requires a work item definition (WID) file to identify the data fields to show in Business Central and accept API calls. The WID file is a mapping between user interactions with jBPM Process Manager and the data that is passed to the work item handler. 
 The WID file also handles the UI details such as the name of the custom task, the category it is displayed as on the palette in Business Central, the icon used to designate the custom task, and the work item handler the custom task will map to.
 
 Add content to the WorkDefinitions.wid file. 
@@ -170,7 +170,7 @@ Registering custom tasks by updating the deployment descriptor outside Business 
 	* After that, select __Settings__ → __Deployments__ → __Work Item Handlers__.
 	* Check Work Item handler is gets added or not. If not then click __Add Work Item Handler__.
 	* In the Name field, enter the display name for the custom task.
-	* From the Resolver list, select MVEL. In the Value field, enter the value based on the resolver type:
+	* From the Resolver list, select MVEL. In the `Value` field, enter the value based on the resolver type:
 		For MVEL, use the format new <full Java package>.<Java work item handler class name>()
 		Example: `new com.kibo.CustomWorkItemWorkItemHandler()`
 	* Click Save to save your changes.
