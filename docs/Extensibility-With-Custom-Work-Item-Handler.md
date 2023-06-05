@@ -8,7 +8,9 @@ We can create a work item handler from scratch using a Maven archetype jbpm-work
 __Steps__
 
 1. Open the command line and create a directory where you will build your work item handler such as workitem-home:
+	```
 	$ mkdir workitem-home
+	```
 	
 1. In the workitem-home directory, execute the following command:
 
@@ -37,26 +39,24 @@ __Steps__
 
 	Parameter | Description
 	--------- | -----------
-	`myworkitems-<version>.jar` | `Used for direct deployment to Red Hat Process Automation Manager.`
-
-	`myworkitems-<version>.zip` | `Used for deployment using a service repository.`
+	`customworkitem-<version>.jar` | `Used for direct deployment to jBPM Process Manager.`
+	`customworkitem-<version>.zip` | `Used for deployment using a service repository.`
 
 
 ## Custom Work item handler project customization
 
-We can customize the code of a work item handler project. There are two Java methods required by a work item handler, `executeWorkItem` and `abortWorkItem`.
+1. We can customize the code of a work item handler project. There are two Java methods required by a work item handler, `executeWorkItem` and `abortWorkItem`.
 
 	Java Method | Description
 	----------- | -----------
 	`executeWorkItem(WorkItem workItem, WorkItemManager manager)` | `Executed by default when the work item handler is run.`
-	`abortWorkItem(WorkItem workItem, WorkItemManager manager)`    | `Executed when the work item is aborted.`
+	`abortWorkItem(WorkItem workItem, WorkItemManager manager)` | `Executed when the work item is aborted.`
 	
 In both methods, the WorkItem parameter contains any of the parameters entered into the custom task through a GUI or API call, and the WorkItemManager parameter is responsible for tracking the state of the custom task.
 
-__Example code structure__
-
-	```
-	public class MyWorkItemWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
+2. __Example code structure__
+```
+	public class CustomWorkItemWorkItemHandler extends AbstractLogOrThrowWorkItemHandler {
 
 	public void executeWorkItem(WorkItem workItem, WorkItemManager manager) {
 		try {
@@ -83,13 +83,12 @@ __Example code structure__
 		// similar
 		}
 	}
-	```
+```
 	
-__Parameter Description__
+3. __Parameter Description__
 
-	Parameter |	Description
+	Parameter | Description
 	--------- | -----------
-	
 	`RequiredParameterValidator.validate(this.getClass(), workItem);` | Checks that all parameters marked “required” are present.
 	`String sampleParam = (String) workItem.getParameter("SampleParam");` | Example of getting a parameter from the `WorkItem` class. The name is always a `string`. 
 	`// complete workitem impl…` | Executes the custom Java code when a parameter is received.
@@ -102,16 +101,16 @@ __Parameter Description__
 Custom work item handler implemetation requires a work item definition (WID) file to identify the data fields to show in Business Central and accept API calls. The WID file is a mapping between user interactions with jBPM process Manager and the data that is passed to the work item handler. 
 The WID file also handles the UI details such as the name of the custom task, the category it is displayed as on the palette in Business Central, the icon used to designate the custom task, and the work item handler the custom task will map to.
 
-1. Add content to the WorkDefinitions.wid file. 
+Add content to the WorkDefinitions.wid file. 
 	Example - 
-	```
+```
 	[
     "name" : "CustomWorkItemDefinitions",
     "displayName" : "CustomWorkItemDefinitions",
     "category" : "",
     "description" : "",
-    "defaultHandler" : "mvel: new com.redhat.CustomWorkItemWorkItemHandler()",
-    "documentation" : "myworkitem/index.html",
+    "defaultHandler" : "mvel: new com.kibo.CustomWorkItemWorkItemHandler()",
+    "documentation" : "customworkitem/index.html",
     "parameters" : [
       "SampleParam" : new StringDataType(),
       "SampleParamTwo" : new StringDataType()
@@ -120,11 +119,11 @@ The WID file also handles the UI details such as the name of the custom task, th
       "SampleResult" : new StringDataType()
     ],
     "mavenDependencies" : [
-      "com.kibp:customworkitem:1.0.0.Final"
+      "com.kibo:customworkitem:1.0.0.Final"
     ],
     "icon" : ""
 	]
-	```
+```
 	
 ##  Deploying custom tasks
 
@@ -135,7 +134,7 @@ Upload the work item handler JAR to the Business Central Maven repository as an 
 
 __Steps__
 
-1. In Business Central, select the __Admin__ icon in the top-right corner of the screen and and select __Service Tasks Administration__.
+1. In Business Central, select the __Admin__ icon in the top-right corner of the screen and and select __Custom Tasks Administration__.
 
 1. To add a custom task, click __Add Custom Task__, browse to the relevant JAR file, and click the __Upload__ icon. The JAR file must contain work item handler implementations annotated with `@Wid`.
 
@@ -151,11 +150,10 @@ Registering custom tasks by updating the deployment descriptor outside Business 
 	* Add the following content based on the resolver type under `<work-item-handlers>`:
 	
 		For MVEL, add the following:
-		
 	```
 	<work-item-handler>
 		<resolver>mvel</resolver>
-		<identifier>new com.redhat.MyWorkItemWorkItemHandler()</identifier>
+		<identifier>new com.kibo.CustomWorkItemWorkItemHandler()</identifier>
 		<parameters/>
 		<name>CustomWorkItem</name>
 	</work-item-handler>
@@ -163,16 +161,14 @@ Registering custom tasks by updating the deployment descriptor outside Business 
 	
 1. Register a custom task work item with the work item handler using the deployment descriptor inside Business Central.
 
-__Steps__
-
-	* In Business Central, go to __Menu → __Design → __Projects and select the project name.
-	* In the project pane, select __Settings → __Deployments → __Dependencies.
+	* In Business Central, go to __Menu__ → __Design__ → __Projects__ and select the project name.
+	* In the project pane, select __Settings__ → __Deployments__ → __Dependencies__.
 	* Click on Add from Repository and then select the JAR file for the project.
-	* After that, select __Settings → __Deployments → __Custom Tasks__.
+	* After that, select __Settings__ → __Deployments__ → __Custom Tasks__.
 	* Click on install `CustomWorkItemDefinitions`.
 	* Click Save to save your changes
-	* After that, select __Settings → __Deployments → __Work Item Handlers__.
-	* Check Work Item handler is gets added or not. If not then click __Add Work Item Handler__S.
+	* After that, select __Settings__ → __Deployments__ → __Work Item Handlers__.
+	* Check Work Item handler is gets added or not. If not then click __Add Work Item Handler__.
 	* In the Name field, enter the display name for the custom task.
 	* From the Resolver list, select MVEL. In the Value field, enter the value based on the resolver type:
 		For MVEL, use the format new <full Java package>.<Java work item handler class name>()
@@ -183,8 +179,9 @@ __Steps__
 
 When a custom task is registered, it appears in the process designer palette. The custom task is named and categorized according to the entries in its corresponding WID file.
 
-Steps to add custom task in workflow diagram - 
-	* In Business Central, go to Menu → Design → Projects and click a project.
+1. Steps to add custom task in workflow diagram - 
+
+	* In Business Central, go to __Menu__ → __Design__ → __Projects__ and click a project.
 	* Select the business process that you want to add a custom task to.
 	* Select the custom task from the palette and drag it to the BPM diagram.
 	* Optional: Change the custom task attributes. For example, change the data output and input from the corresponding WID file.
