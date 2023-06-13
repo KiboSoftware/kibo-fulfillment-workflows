@@ -1,0 +1,9 @@
+**/.*
+**/*.md
+**/*.pid
+**/*.sh
+**/Dockerfile*
+**/Jenkinsfile*
+**/mvnw*
+**/target/
+!**/sonarscanner/sonarnet.sh
