@@ -13,6 +13,7 @@ ARG SONAR_SCAN=enabled
 ENV SONAR_SCAN=$SONAR_SCAN
 
 RUN sed -i -r "s/MAVENPUBLISHKEY/${MAVEN_PUBLISH_KEY}/g" maven_settings.xml \
+ && chmod 755 /app/set-deploy-version.sh \
  && bash ./set-deploy-version.sh \
  && mkdir -p /app/target/jacoco-aggregate \
  && chmod 755 /app/sonarscanner/sonarnet.sh \
