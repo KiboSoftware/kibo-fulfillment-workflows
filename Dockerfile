@@ -57,7 +57,6 @@ COPY --from=scan /build .
 COPY --from=scan /build/target/surefire-reports /buildoutput/testoutput
 COPY --from=scan /build/target/jacoco-aggregate /buildoutput/jacoco
 COPY --from=scan /build/target/*.exec /buildoutput/jacoco/
-COPY deploy.sh .
 ARG MAVEN_OPTS
 ARG PUBLISH
 RUN echo "MAVEN_OPTS=$MAVEN_OPTS PUBLISH=$PUBLISH" \
