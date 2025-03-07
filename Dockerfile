@@ -58,5 +58,7 @@ COPY --from=scan /build/target/surefire-reports /buildoutput/testoutput
 COPY --from=scan /build/target/jacoco-aggregate /buildoutput/jacoco
 COPY --from=scan /build/target/*.exec /buildoutput/jacoco/
 ARG MAVEN_OPTS
-RUN echo "MAVEN_OPTS=$MAVEN_OPTS" \
- && mvn -B -e -s maven_settings.xml deploy -fn -P nexus-deploy
+ARG PUBLISH
+RUN echo "MAVEN_OPTS=$MAVEN_OPTS PUBLISH=$PUBLISH" \
+ && chmod +x ./deploy.sh \
+ && ./deploy.sh
