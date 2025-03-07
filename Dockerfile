@@ -15,8 +15,8 @@ COPY set-deploy-version.sh .
 ARG BUILD_VER
 ENV BUILD_VER=$BUILD_VER
 ARG MAVEN_PUBLISH_KEY
-RUN sed -i -r "s/MAVENPUBLISHKEY/${MAVEN_PUBLISH_KEY}/g" maven_settings.xml \
- && chmod 755 ./set-deploy-version.sh \
+ENV MAVEN_PUBLISH_KEY=$MAVEN_PUBLISH_KEY
+RUN chmod 755 ./set-deploy-version.sh \
  && bash ./set-deploy-version.sh \
  && mvn -B -e -s maven_settings.xml dependency:resolve-plugins dependency:resolve
 
@@ -58,7 +58,11 @@ COPY --from=scan /build/target/surefire-reports /buildoutput/testoutput
 COPY --from=scan /build/target/jacoco-aggregate /buildoutput/jacoco
 COPY --from=scan /build/target/*.exec /buildoutput/jacoco/
 ARG MAVEN_OPTS
+ENV MAVEN_OPTS=$MAVEN_OPTS
 ARG PUBLISH
+ENV PUBLISH=$PUBLISH
+ARG MAVEN_PUBLISH_KEY
+ENV MAVEN_PUBLISH_KEY=$MAVEN_PUBLISH_KEY
 RUN echo "MAVEN_OPTS=$MAVEN_OPTS PUBLISH=$PUBLISH" \
  && chmod +x ./deploy.sh \
  && ./deploy.sh
